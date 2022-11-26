@@ -1,7 +1,23 @@
 const mongoose = require('mongoose');
 
 const itemSchema = new mongoose.Schema({
-    list: {
+    task: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    periodType: {
+        type: String,
+        required: true
+    },
+    periodDate: {
+        type: Date,
+        required: true
+    },
+    taskListName: {
         type: String,
         required: true
     }
