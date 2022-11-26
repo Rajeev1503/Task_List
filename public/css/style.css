@@ -1,0 +1,175 @@
+*
+{
+    margin:0px;
+    padding:0px;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+body,html{
+    height:100%;
+    width:100%;
+    background-color:#f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+}
+
+
+.container
+{
+    height:540px;
+    width:330px;
+    background-color:rgb(255, 255, 255);
+    border-radius: 15px;
+    box-shadow: 0px 0px 18px 0px rgb(173, 173, 173);
+    padding:2rem;
+    text-align: center;
+}
+
+h1{
+    color: rgb(82, 82, 82);
+}
+
+.inputform
+{
+    margin-top: 3rem;
+}
+
+.submit
+{
+    height:40px;
+    width:80px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 8px 0px rgb(211, 211, 211);
+    border:none;
+    outline:none;
+}
+
+input
+{
+    height:40px;
+    width:220px;
+    margin-right:10px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 18px 0px rgb(231, 231, 231);
+    border:none;
+    outline:none;
+    padding-left:10px;
+}
+input:focus::placeholder {
+    color: transparent;
+  }
+
+
+.tasklist
+{
+    margin:auto auto;
+    margin-top:2rem;
+    width:85%;
+    height:350px;
+    padding:0.8rem 1rem;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.tasklist>ul
+{
+    /* width:100%; */
+    list-style:none;
+    
+    
+}
+
+.tasksview
+{
+    width:90%;
+    display: flex;
+    height: 30px;
+    margin-top:0.8rem;
+    padding:0.3rem 1rem;
+    overflow: hidden;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: 0px 0px 8px 0px rgb(231, 231, 231);
+}
+.tasksview>li
+{
+    text-transform: capitalize;
+}
+
+.taskbuttonsdiv
+{
+    display:flex;
+    align-items: center;
+}
+
+.task-btn
+{
+    height:25px;
+    width:50px;
+    border-radius: 5px;
+    margin-left:10px;
+    border:none;
+    outline:none;
+    padding:5px;
+}
+
+
+
+
+@media only screen and (max-width:500px) {
+
+
+    .container
+    {
+        height:100%;
+        width:100%;
+        padding:0px !important;
+        box-shadow:none;
+        border-radius: none;
+    }
+    h1
+    {
+        margin-top:2rem !important;
+    }
+
+    .tasklist
+    {
+        margin:auto auto;
+        margin-top:3rem;
+        width:75%;
+        height:55%;
+        padding:0.5rem 0.5rem;
+    }
+
+    .tasksview
+    {
+        height: 35px;
+        margin-top:1.2rem;
+    }
+    input
+    {
+        height:45px;
+        width:75%;
+    }
+.inputform
+{
+    margin:auto auto;
+    margin-top:6rem;
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+}
