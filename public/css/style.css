@@ -174,3 +174,7 @@ input:focus::placeholder {
 }
 
 }
+
+.periodType{
+    margin-bottom: 10px;
+}
