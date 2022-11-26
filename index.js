@@ -37,6 +37,7 @@ app.get('/todo', async(req, res) => {
 
 
 app.post('/todo', async(req, res) => {
+    console.log(req.body);
     const data = new Item(req.body)
     await data.save()
     .then(() => {
