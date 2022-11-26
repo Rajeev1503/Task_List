@@ -9,14 +9,14 @@ const Tasks_Schema = new mongoose.Schema({
         type: String,
         required: true
     },
-    date: {
-        type:Date,
-        required:true
-    },
-    period: {
-        type:String,
-        required:true
-    }
+    // date: {
+    //     type:Date,
+    //     required:true
+    // },
+    // period: {
+    //     type:String,
+    //     required:true
+    // }
 })
 
 const TaskList = mongoose.model('Task_Schema', Tasks_Schema);

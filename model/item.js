@@ -7,16 +7,8 @@ const itemSchema = new mongoose.Schema({
     },
     description: {
         type: String,
+        required: true
     },
-    periodType: {
-        type: String,
-    },
-    periodDate: {
-        type: Date,
-    },
-    taskListName: {
-        type: String,
-    }
 })
 
 const Item = mongoose.model('Item', itemSchema);
