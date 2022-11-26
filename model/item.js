@@ -7,19 +7,15 @@ const itemSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        required: true
     },
     periodType: {
         type: String,
-        required: true
     },
     periodDate: {
         type: Date,
-        required: true
     },
     taskListName: {
         type: String,
-        required: true
     }
 })
 
