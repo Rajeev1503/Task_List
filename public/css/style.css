@@ -94,6 +94,7 @@ input:focus::placeholder {
     display: flex;
     height: auto;
     margin-top:0.8rem;
+    margin-left:20px;
     padding:0.3rem 1rem;
     overflow: hidden;
     justify-content: space-between;
@@ -146,7 +147,7 @@ input:focus::placeholder {
     {
         margin:auto auto;
         margin-top:3rem;
-        width:75%;
+        width:95%;
         height:55%;
         padding:0.5rem 0.5rem;
     }
