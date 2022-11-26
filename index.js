@@ -46,7 +46,7 @@ app.post('/todo', async(req, res) => {
     .catch(() => {
         console.log("Data Not Save  ")
     })
-    console.log("Hello And Welcome " + req.body.list)
+    console.log("Hello And Welcome " + req.body.task)
     res.redirect('/')
 })
 
