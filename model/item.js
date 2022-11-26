@@ -9,6 +9,18 @@ const itemSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    periodType: {
+        type:String,
+        required:true
+    },
+    period: {
+        type:String,
+        required:true
+    },
+    taskListName: {
+        type:String,
+        required:true
+    }
 })
 
 const Item = mongoose.model('Item', itemSchema);
