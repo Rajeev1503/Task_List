@@ -9,39 +9,40 @@
   </head>
   <body>
     <div class="container">
-      <a href="/api/createtasklist"> Create New Task List</a>
-      <h1>Tasks List</h1>
-      <form method="post" action="/todo" class="inputform">
-        <input
-          type="text"
-          name="task"
-          placeholder="Task name"
-          autocomplete="off"
-        />
-        <input
-          type="text"
-          name="description"
-          placeholder="Description"
-          autocomplete="off"
-        />
-        <br />
-        <select name="periodType" class="periodType">
-          <option value="Monthly">Monthly</option>
-          <option value="Quarterly">Quarterly</option>
-          <option value="Yearly">Yearly</option>
-        </select>
-        <br />
-        <input type="date" name="period" autocomplete="off" />
-        <br />
-        <input
-          type="text"
-          name="taskListName"
-          placeholder="Task List Name"
-          autocomplete="off"
-        />
-        <br />
-        <button class="submit">Submit</button>
-      </form>
+      <div class="create-task-container">
+        <h1>Create New Task List</h1>
+        <form method="post" action="/todo" class="inputform">
+          <input
+            type="text"
+            name="task"
+            placeholder="Task name"
+            autocomplete="off"
+          />
+          <textarea
+            name="description"
+            placeholder="Description"
+            autocomplete="off"
+          ></textarea>
+          <br />
+          <select name="periodType" class="periodType">
+            <option value="Monthly">Monthly</option>
+            <option value="Quarterly">Quarterly</option>
+            <option value="Yearly">Yearly</option>
+          </select>
+          <br />
+          <input type="date" name="period" autocomplete="off" />
+          <br />
+          <input
+            type="text"
+            name="taskListName"
+            placeholder="Task List Name"
+            autocomplete="off"
+          />
+          <br />
+          <button class="submit">Submit</button>
+        </form>
+      </div>
+
       <div class="tasklist">
         <ul>
           <% for(let product of products) { %>
@@ -55,16 +56,17 @@
                 <li><%= product.taskListName %></li>
               </ul>
             </li>
+            <br>
             <div class="taskbuttonsdiv">
               <button class="task-btn">
                 <a href="todo/<%= product._id %>/edit">Edit</a>
               </button>
 
-              <form
+              <form class="task-btn"
                 action="/todo/<%=product._id%>?_method=DELETE"
                 method="POST"
               >
-                <button class="task-btn">Delete</button>
+                <button class="delete-btn">Delete</button>
               </form>
             </div>
           </div>
