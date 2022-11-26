@@ -11,7 +11,6 @@ const itemSchema = new mongoose.Schema({
     },
     periodType: {
         type: String,
-        required: true
     },
     periodDate: {
         type: Date,
