@@ -35,6 +35,9 @@ app.get('/todo', async(req, res) => {
     res.render('index', {products})
 })
 
+
+
+
 app.post('/todo', async(req, res) => {
     const data = new Item(req.body)
     await data.save()
@@ -64,6 +67,11 @@ app.delete('/todo/:id', async (req, res) => {
     const { id } = req.params;
     const deletedProduct = await Item.findByIdAndDelete(id);
     res.redirect('/');
+})
+
+app.get('/api/createtasklist', async (req, res) => {
+    const products =  await Item.find({})
+    res.render('createtasklist', {products})
 })
 
 
