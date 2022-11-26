@@ -4,8 +4,9 @@ const methodOverride = require('method-override')
 const path = require('path');
 
 const app = express()
-const port = 8000
-
+const port = process.env.PORT || 8000
+const DB =
+  "mongodb+srv://rajeev:1409rajeev@cluster0.ronsn.mongodb.net/tasklist?retryWrites=true&w=majority";
 
 app.set('view engine', 'ejs')
 app.use(methodOverride('_method'))
@@ -16,12 +17,12 @@ app.use(express.static(__dirname + '/public'));
 
 const Item = require('./model/item')
 
-mongoose.connect('mongodb://localhost:27017/TodoDb', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("MONGO CONNECTION OPEN!!!")
     })
     .catch(err => {
-        console.log("OH NO MONGO CONNECTION ERROR!!!!")
+        console.log("MONGO CONNECTION ERROR!!!!")
         console.log(err)
 })
 
