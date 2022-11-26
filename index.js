@@ -34,6 +34,11 @@ app.get('/todo', async(req, res) => {
     const products =  await Item.find({})
     res.render('index', {products})
 })
+app.get('/api/createtasklist', (req, res) => {
+    res.render('createtasklist', {products})
+})
+
+
 
 app.post('/todo', async(req, res) => {
     const data = new Item(req.body)
