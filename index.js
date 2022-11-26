@@ -26,9 +26,6 @@ mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true })
         console.log(err)
 })
 
-
-
-
 app.get('/', (req, res) => {
   res.redirect('/todo')
 })
