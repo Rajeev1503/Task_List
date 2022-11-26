@@ -65,6 +65,7 @@ input
     border:none;
     outline:none;
     padding-left:10px;
+    margin-bottom: 10px;
 }
 input:focus::placeholder {
     color: transparent;
