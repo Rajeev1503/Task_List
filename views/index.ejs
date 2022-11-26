@@ -1,50 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <a href="/api/createtasklist"> Create New Task List</a>
-    <h1>Tasks List</h1>
-    <form method="post" action="/todo" class="inputform">
-        <input type="text" name="task" placeholder="Task name" autocomplete="off">
-        <input type="text" name="description" placeholder="Description" autocomplete="off">
-        <br>
+      <a href="/api/createtasklist"> Create New Task List</a>
+      <h1>Tasks List</h1>
+      <form method="post" action="/todo" class="inputform">
+        <input
+          type="text"
+          name="task"
+          placeholder="Task name"
+          autocomplete="off"
+        />
+        <input
+          type="text"
+          name="description"
+          placeholder="Description"
+          autocomplete="off"
+        />
+        <br />
         <select name="periodType" class="periodType">
-            <option value="Monthly">Monthly</option>
-            <option value="Quarterly">Quarterly</option>
-            <option value="Yearly">Yearly</option>
+          <option value="Monthly">Monthly</option>
+          <option value="Quarterly">Quarterly</option>
+          <option value="Yearly">Yearly</option>
         </select>
-        <br>
-        <input type="date" name="period" autocomplete="off">
-        <br>
-        <input type="text" name="taskListName" placeholder="Task List Name" autocomplete="off">
-        <br>
+        <br />
+        <input type="date" name="period" autocomplete="off" />
+        <br />
+        <input
+          type="text"
+          name="taskListName"
+          placeholder="Task List Name"
+          autocomplete="off"
+        />
+        <br />
         <button class="submit">Submit</button>
-     </form>
-     <div class="tasklist">
-     <ul>
-        <% for(let product of products) { %>
-            <div class="tasksview">
-        <li><%= product.task %></li>
-        <div class="taskbuttonsdiv">
-        <button class="task-btn"> <a href="todo/<%= product._id %>/edit">Edit</a></button> 
+      </form>
+      <div class="tasklist">
+        <ul>
+          <% for(let product of products) { %>
+          <div class="tasksview">
+            <li>
+              <ul>
+                <li><%= product.task %></li>
+                <li><%= product.description %></li>
+                <li><%= product.periodType %></li>
+                <li><%= product.period %></li>
+                <li><%= product.taskListName %></li>
+              </ul>
+            </li>
+            <div class="taskbuttonsdiv">
+              <button class="task-btn">
+                <a href="todo/<%= product._id %>/edit">Edit</a>
+              </button>
 
-        <form action="/todo/<%=product._id%>?_method=DELETE" method="POST">
-           <button class="task-btn">Delete</button> 
-        </form>
+              <form
+                action="/todo/<%=product._id%>?_method=DELETE"
+                method="POST"
+              >
+                <button class="task-btn">Delete</button>
+              </form>
+            </div>
+          </div>
+          <% }%>
+        </ul>
+      </div>
     </div>
-    </div>
-        <% }%>
-    </ul>
-    </div>
-</div>
-</body>
+  </body>
 </html>
-
-
