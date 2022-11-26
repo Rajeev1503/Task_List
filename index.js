@@ -34,10 +34,7 @@ app.get('/todo', async(req, res) => {
     const products =  await Item.find({})
     res.render('index', {products})
 })
-app.get('/api/createtasklist', async (req, res) => {
-    const products =  await Item.find({})
-    res.render('createtasklist', {products})
-})
+
 
 
 
@@ -70,6 +67,11 @@ app.delete('/todo/:id', async (req, res) => {
     const { id } = req.params;
     const deletedProduct = await Item.findByIdAndDelete(id);
     res.redirect('/');
+})
+
+app.get('/api/createtasklist', async (req, res) => {
+    const products =  await Item.find({})
+    res.render('createtasklist', {products})
 })
 
 
