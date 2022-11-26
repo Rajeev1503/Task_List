@@ -52,7 +52,7 @@ app.post('/todo', async(req, res) => {
 app.get('/todo/:id/edit', async (req, res) => {
     const { id } = req.params;
     const product = await Item.findById(id);
-    res.render("edit",{product})
+    res.render("edit", {product})
 })
 
 app.put('/todo/:id', async (req, res) => {
