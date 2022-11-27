@@ -11,10 +11,10 @@
     <div class="container">
       <div class="create-task-container">
         <h1>Create New Task List</h1>
-        <form method="post" action="/todo" class="inputform">
+        <form method="post" action="/createtasklist" class="inputform">
           <input
             type="text"
-            name="task"
+            name="taskListName"
             placeholder="Task name"
             autocomplete="off"
           />
@@ -24,20 +24,7 @@
             autocomplete="off"
           ></textarea>
           <br />
-          <select name="periodType" class="periodType">
-            <option value="Monthly">Monthly</option>
-            <option value="Quarterly">Quarterly</option>
-            <option value="Yearly">Yearly</option>
-          </select>
-          <br />
-          <input type="date" name="period" autocomplete="off" />
-          <br />
-          <input
-            type="text"
-            name="taskListName"
-            placeholder="Task List Name"
-            autocomplete="off"
-          />
+          
           <br />
           <button class="submit">Submit</button>
         </form>
@@ -45,25 +32,28 @@
 
       <div class="tasklist">
         <ul>
-          <% for(let product of products) { %>
+          <% for(let taskList of allTaskList) { %>
           <div class="tasksview">
             <li>
               <ul>
-                <li><%= product.task %></li>
-                <li><%= product.description %></li>
-                <li><%= product.periodType %></li>
-                <li><%= product.period %></li>
-                <li><%= product.taskListName %></li>
+                <li><%= taskList.taskListName %></li>
+                <li><%= taskList.description %></li>
+                <% if (taskList.isActive) { %>
+                  <h2 style="color:green">Active</h2>
+                  <%} else { %>
+                  <h2 style="color:red">Active</h2>
+                  <% } %>
+                  
               </ul>
             </li>
             <br>
             <div class="taskbuttonsdiv">
               <button class="task-btn">
-                <a href="todo/<%= product._id %>/edit">Edit</a>
+                <a href="todo/<%= taskList._id %>/edit">Edit</a>
               </button>
 
               <form class="task-btn"
-                action="/todo/<%=product._id%>?_method=DELETE"
+                action="/todo/<%=taskList._id%>?_method=DELETE"
                 method="POST"
               >
                 <button class="delete-btn">Delete</button>
