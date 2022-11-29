@@ -38,26 +38,4 @@ app.get('/', (req,res)=> {
 })
 
 
-// app.get('/todo/:id/edit', async (req, res) => {
-//     const { id } = req.params;
-//     const product = await Task.findById(id);
-//     res.render("edit", {product})
-// })
-
-// app.put('/todo/:id', async (req, res) => {
-//     const { id } = req.params;
-//     const product = await Task.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
-//     res.redirect("/");
-// })
-
-// app.delete('/todo/:id', async (req, res) => {
-//     const { id } = req.params;
-//     const deletedProduct = await Task.findByIdAndDelete(id);
-//     res.redirect('/');
-// })
-
-
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+app.listen(port);
