@@ -34,18 +34,7 @@ mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true })
 app.use(createTaskList);
 
 
-// app.post('/todo', async(req, res) => {
-//     const data = new Task(req.body)
-//     await data.save()
-//     .then(() => {
-//         console.log("Data Save successsFull")
-//     })
-//     .catch(() => {
-//         console.log("Data Not Save  ")
-//     })
-//     console.log("Hello And Welcome " + req.body.task)
-//     res.redirect('/')
-// })
+
 
 // app.get('/todo/:id/edit', async (req, res) => {
 //     const { id } = req.params;
@@ -65,12 +54,8 @@ app.use(createTaskList);
 //     res.redirect('/');
 // })
 
-// app.get('/api/createtasklist', async (req, res) => {
-//     const products =  await Task.find({})
-//     res.render('createtasklist', {products})
-// })
 
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`Example app listening at http://localhost:${port}/createtasklist`)
 })

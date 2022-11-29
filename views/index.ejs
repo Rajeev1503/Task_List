@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <title>Document</title>
-  </head>
+  <%- include('./shared/head', {title: "Todo App"}); -%>
   <body>
     <div class="container">
       <div class="create-task-container">
         <h1>Create New Task List</h1>
-        <form method="post" action="/createtasklist" class="inputform">
+        <form method="POST" action="/createtasklist"  class="inputform">
           <input
             type="text"
             name="taskListName"
@@ -22,9 +16,10 @@
             name="description"
             placeholder="Description"
             autocomplete="off"
+            rows="4"
           ></textarea>
           <br />
-          
+
           <br />
           <button class="submit">Submit</button>
         </form>
@@ -36,24 +31,24 @@
           <div class="tasksview">
             <li>
               <ul>
-                <li><%= taskList.taskListName %></li>
-                <li><%= taskList.description %></li>
+                <li>Name: <%= taskList.taskListName %></li>
+                <li>Description: <%= taskList.description %></li>
                 <% if (taskList.isActive) { %>
-                  <h2 style="color:green">Active</h2>
-                  <%} else { %>
-                  <h2 style="color:red">Active</h2>
-                  <% } %>
-                  
+                <p style="color: green">Active</p>
+                <%} else { %>
+                <p style="color: red">Active</p>
+                <% } %>
               </ul>
             </li>
-            <br>
+            <br />
             <div class="taskbuttonsdiv">
               <button class="task-btn">
-                <a href="todo/<%= taskList._id %>/edit">Edit</a>
+                <a href="createtasklist/<%= taskList._id %>/edit">Edit</a>
               </button>
 
-              <form class="task-btn"
-                action="/todo/<%=taskList._id%>?_method=DELETE"
+              <form
+                class="task-btn"
+                action="/createtasklist/<%=taskList._id%>?_method=DELETE"
                 method="POST"
               >
                 <button class="delete-btn">Delete</button>
@@ -65,4 +60,54 @@
       </div>
     </div>
   </body>
-</html>
+  </html>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <script>
+    const submitHandler = async (e) => {
+      e.preventDefault();
+      console.log("script running");
+      const storeFormData = {
+        taskListName: formData.get("taskListName"),
+        description: formData.get("description"),
+      };
+
+      try{
+      const response = await fetch("/createtasklist", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(response)
+      });
+      const responseData = await response.json();
+      console.log("responseData: " + responseData);
+      if(!response.ok){
+    throw new Error("Login failed message fron frontend : " + responseData.message);
+  }
+  console.log("all good");
+    } catch(err){
+      console.log(err);
+    }
+    };
+  </script> -->
