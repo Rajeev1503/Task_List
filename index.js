@@ -33,9 +33,9 @@ mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.use(createTaskList);
 
-// app.get('/', (req,res)=> {
-//   res.redirect('/createtasklist');
-// })
+app.get('/', (req,res)=> {
+  res.redirect('/createtasklist');
+})
 
 
 app.listen(port);
