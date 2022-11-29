@@ -33,7 +33,9 @@ mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.use(createTaskList);
 
-
+app.get('/', (req,res)=> {
+  res.redirect('/createtasklist');
+})
 
 
 // app.get('/todo/:id/edit', async (req, res) => {
@@ -57,5 +59,5 @@ app.use(createTaskList);
 
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}/createtasklist`)
+  console.log(`Example app listening at http://localhost:${port}`)
 })
