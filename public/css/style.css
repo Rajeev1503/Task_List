@@ -97,6 +97,7 @@ a {
   box-shadow: 0px 0px 18px 0px rgb(167, 167, 167);
   width: 25%;
   padding: 2rem;
+  overflow-y: scroll;
 }
 
 .create-task-container-mobile {
@@ -210,7 +211,7 @@ textarea:focus::placeholder {
 .tasklist-container {
   margin-top: 3rem;
   justify-content: start !important;
-  overflow-y: scroll;
+  
 }
 
 textarea {
@@ -225,6 +226,7 @@ label {
 
 .add-new-task {
   margin-bottom: 4rem;
+  width:100%;
 }
 
 .add-new-task h2 {
@@ -246,95 +248,7 @@ label {
   display: none;
 }
 
-@media only screen and (max-width: 800px) {
-  .mobile-menu-container {
-    display: block;
-    margin-top: 5rem;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
 
-  .mobile-menu-button-wrapper {
-    margin: auto auto;
-    background-color: aliceblue;
-    width: 50%;
-    padding: 1rem;
-  }
-
-  .account-container ul li span {
-    display: none;
-  }
-
-  .container {
-    flex-flow: column;
-  }
-
-  .create-task-container {
-    display: none;
-  }
-  .create-task-container-mobile {
-    clear: both;
-    display: flex !important;
-    flex-flow: column !important;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    width: 0px;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding: 0px;
-    color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255);
-  }
-
-  .create-task-container-mobile-width {
-    width:70% !important;
-    padding:2rem;
-  }
-
-  .create-task-container-mobile form {
-    display: flex !important;
-    flex-flow: column !important;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .close-button {
-    display: block;
-    width: 100%;
-    text-align: right;
-    margin-bottom: 6rem;
-  }
-
-  h1 {
-    margin-top: 2rem !important;
-  }
-
-  .tasklist {
-    margin: auto auto;
-    margin-top: 0rem;
-    width: 95%;
-    height: 100%;
-    padding: 0.5rem 0.5rem;
-  }
-
-  .tasklist > ul {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .tasksview {
-    height: auto;
-    margin-top: 1.2rem;
-  }
-  .inputform {
-    margin: auto auto;
-    margin-top: 6rem;
-    display: flex;
-    width: 80%;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
 
 .periodType {
   margin-bottom: 10px;
