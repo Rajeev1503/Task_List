@@ -65,7 +65,7 @@ exports.saveEditedTask = async (req, res) => {
 exports.deleteTaskList = async (req, res) => {
   try {
     const deletedTask = await TaskList.findByIdAndDelete(req.TaskList._id);
-    res.status(200).redirect("/createTaskList");
+    res.status(200).redirect("/api/createTaskList");
   } catch (err) {
     return res.status(400).redirect("/api/createTaskList");
   }

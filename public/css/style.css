@@ -59,7 +59,7 @@ a {
   flex-flow: column;
   justify-content: center;
   box-shadow: 0px 0px 18px 0px rgb(167, 167, 167);
-  width: 22%;
+  width: 25%;
   padding: 2rem;
 }
 
@@ -103,23 +103,32 @@ textarea:focus::placeholder {
 }
 
 .tasklist {
-  margin-left: 29%;
-  padding: 2rem;
-  width: 70%;
+  margin-left: 30%;
+  width: 65%;
+  padding:2rem;
 }
+
 .tasklist > ul {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
-  height: 400px;
 }
 
-.tasksview > a > li > ul {
+
+.tasksview >a> li > ul {
   list-style: none;
   padding: 0px;
 }
-.tasksview > a > li > ul > li {
+.tasksview > li > ul {
+  list-style: none;
+  padding: 0px;
+}
+.tasksview >a> li > ul > li {
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.tasksview > li > ul > li {
   margin-bottom: 10px;
   overflow: hidden;
 }
@@ -133,7 +142,7 @@ textarea:focus::placeholder {
   padding: 1rem;
   box-shadow: 0px 0px 8px 0px rgb(201, 201, 201);
 }
-.tasksview > a > li {
+.tasksview > li {
   text-transform: capitalize;
 }
 

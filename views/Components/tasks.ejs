@@ -1,11 +1,11 @@
 <div class="tasklist alltasks">
+  <% if(allTasks.length===0) { %>
+    <h2>No Task Found</h2>
+  <%} else {%> 
   <ul>
-    <% if(allTasks.length===0) { %>
-      <h3>No Task Found</h3>
-    <%} else {%> 
+    
     <% for(let task of allTasks) { %>
     <div class="tasksview">
-      <!-- <a href="/api/createtasklist/"> -->
         <li>
           <ul>
             <li>Name: <%= task.taskListName %></li>
@@ -17,8 +17,6 @@
             <% } %>
           </ul>
         </li>
-      <!-- </a> -->
-      <br />
     </div>
     <% } }%>
   </ul>
