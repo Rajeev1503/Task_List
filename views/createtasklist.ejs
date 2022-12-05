@@ -1,0 +1,54 @@
+
+      
+        <%- include('./Shared/navbar'); -%>
+        <div class="container">
+          <div class="mobile-menu-container">
+            <%- include('./Shared/mobiletopmenu', {page:"index"}); -%>
+          </div>
+          
+      <div class="create-task-container create-task-container-mobile" id="mobilemenuhandler">
+        <h1>Create New Task List</h1>
+        <form method="POST" action="/api/createtasklist" class="inputform">
+          <input
+            type="text"
+            name="taskListName"
+            placeholder="Task name"
+            autocomplete="off"
+          />
+          <textarea
+            name="description"
+            placeholder="Description"
+            autocomplete="off"
+            rows="4"
+          ></textarea>
+          <br />
+
+          <br />
+          <button class="submit">Submit</button>
+        </form>
+        <div class="close-button" onClick=`${mobileMenuHandler(false)}`><span>Close</span></div>
+        
+      </div>
+
+      <div class="tasklist">
+        <ul>
+          <% for(let taskList of allTaskList) { %>
+          <div class="tasksview">
+            <a href="/api/createtasklist/<%= taskList._id %>">
+              <li>
+                <ul>
+                  <li>Name: <%= taskList.taskListName %></li>
+                  <li>Description: <%= taskList.description %></li>
+                  <% if (taskList.isActive) { %>
+                  <p style="color: green">Active</p>
+                  <%} else { %>
+                  <p style="color: red">Active</p>
+                  <% } %>
+                </ul>
+              </li>
+            </a>
+          </div>
+          <% }%>
+        </ul>
+      </div>
+    </div>
