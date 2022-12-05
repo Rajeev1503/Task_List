@@ -1,0 +1,36 @@
+<div class="taskbuttonsdiv">
+    <form
+      class="task-btn"
+      action="/api/createtasklist/<%=taskList._id%>?_method=DELETE"
+      method="POST"
+    >
+      <button class="delete-btn">Delete Task List</button>
+    </form>
+  </div>
+  <div class="edit-task-list">
+    <div>
+    <h1><%=taskList.taskListName%></h1>
+    <form
+      action="/api/createtasklist/<%=taskList._id%>?_method=PUT"
+      method="POST"
+      class="inputform"
+    >
+      <input
+        type="text"
+        name="taskListName"
+        placeholder="Task name"
+        autocomplete="off"
+        value="<%= taskList.taskListName %>"
+      />
+      <textarea
+        name="description"
+        placeholder="Description"
+        autocomplete="off"
+      ><%= taskList.description%></textarea
+      >
+      <br />
+      <button class="submit" >Update</button>
+    </form></div>
+  </div>
+  <br />
+  <br />

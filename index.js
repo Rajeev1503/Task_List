@@ -31,10 +31,11 @@ mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true })
         console.log(err)
 })
 
-app.use(createTaskList);
+app.use('/api',createTaskList);
+app.use('/api',createTask);
 
 app.get('/', (req,res)=> {
-  res.redirect('/createtasklist');
+  res.redirect('/api/createtasklist');
 })
 
 

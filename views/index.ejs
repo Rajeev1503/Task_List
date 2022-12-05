@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('./head', {title: "Todo App"}); -%>
-  <body>
-    <div class="container">
+      <%- include('./Partials/head', {title: "Todo App"}); -%>
+      <body>
+        <div class="container">
       <div class="create-task-container">
         <h1>Create New Task List</h1>
-        <form method="POST" action="/createtasklist"  class="inputform">
+        <form method="POST" action="/api/createtasklist" class="inputform">
           <input
             type="text"
             name="taskListName"
@@ -29,85 +29,25 @@
         <ul>
           <% for(let taskList of allTaskList) { %>
           <div class="tasksview">
-            <li>
-              <ul>
-                <li>Name: <%= taskList.taskListName %></li>
-                <li>Description: <%= taskList.description %></li>
-                <% if (taskList.isActive) { %>
-                <p style="color: green">Active</p>
-                <%} else { %>
-                <p style="color: red">Active</p>
-                <% } %>
-              </ul>
-            </li>
+            <a href="/api/createtasklist/<%= taskList._id %>">
+              <li>
+                <ul>
+                  <li>Name: <%= taskList.taskListName %></li>
+                  <li>Description: <%= taskList.description %></li>
+                  <% if (taskList.isActive) { %>
+                  <p style="color: green">Active</p>
+                  <%} else { %>
+                  <p style="color: red">Active</p>
+                  <% } %>
+                </ul>
+              </li>
+            </a>
             <br />
-            <div class="taskbuttonsdiv">
-              <button class="task-btn">
-                <a href="createtasklist/<%= taskList._id %>/edit">Edit</a>
-              </button>
-
-              <form
-                class="task-btn"
-                action="/createtasklist/<%=taskList._id%>?_method=DELETE"
-                method="POST"
-              >
-                <button class="delete-btn">Delete</button>
-              </form>
-            </div>
           </div>
           <% }%>
         </ul>
       </div>
     </div>
+  </div>
   </body>
-  </html>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- <script>
-    const submitHandler = async (e) => {
-      e.preventDefault();
-      console.log("script running");
-      const storeFormData = {
-        taskListName: formData.get("taskListName"),
-        description: formData.get("description"),
-      };
-
-      try{
-      const response = await fetch("/createtasklist", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(response)
-      });
-      const responseData = await response.json();
-      console.log("responseData: " + responseData);
-      if(!response.ok){
-    throw new Error("Login failed message fron frontend : " + responseData.message);
-  }
-  console.log("all good");
-    } catch(err){
-      console.log(err);
-    }
-    };
-  </script> -->
+</html>

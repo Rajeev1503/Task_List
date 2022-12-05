@@ -1,0 +1,25 @@
+<div class="tasklist alltasks">
+  <ul>
+    <% if(allTasks.length===0) { %>
+      <h3>No Task Found</h3>
+    <%} else {%> 
+    <% for(let task of allTasks) { %>
+    <div class="tasksview">
+      <!-- <a href="/api/createtasklist/"> -->
+        <li>
+          <ul>
+            <li>Name: <%= task.taskListName %></li>
+            <li>Description: <%= task.description %></li>
+            <% if (taskList.isActive) { %>
+            <p style="color: green">Active</p>
+            <%} else { %>
+            <p style="color: red">Active</p>
+            <% } %>
+          </ul>
+        </li>
+      <!-- </a> -->
+      <br />
+    </div>
+    <% } }%>
+  </ul>
+</div>

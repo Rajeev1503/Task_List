@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./Partials/head', {title: "Todo App"}); -%>
+  <body>
+    <div class="container">
+      <div class="create-task-container tasklist-container">
+        <%- include('./Components/edit', {taskList}); -%>
+        <%- include('./Components/addtask', {taskList}); -%>
+      </div>
+      <%- include('./Components/tasks', {allTasks}) -%>
+
+    </div>
+  </body>
+</html>

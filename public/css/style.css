@@ -2,9 +2,24 @@
   padding: 0px;
   margin: 0px;
 }
+/* width */
 ::-webkit-scrollbar {
-  width: 0px;
-  background: transparent;
+width: 3px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: rgb(28, 28, 28);
+height:10px;
+/* border-radius: 10px; */
+}
+::-webkit-scrollbar-track {
+background:rgb(224, 224, 224)
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: rgb(36, 36, 36);
 }
 
 body,
@@ -12,10 +27,14 @@ html {
   height: 100%;
   width: 100%;
   display: flex;
-  background: #fff;
   justify-content: center;
   align-items: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  text-transform: capitalize;
+  margin: 0px;
 }
 
 a {
@@ -32,11 +51,15 @@ a {
 }
 
 .create-task-container {
+  position: fixed;
+  top: 0;
+  left: 0px;
+  height: 100%;
   display: flex;
   flex-flow: column;
   justify-content: center;
   box-shadow: 0px 0px 18px 0px rgb(167, 167, 167);
-  width: 30%;
+  width: 22%;
   padding: 2rem;
 }
 
@@ -45,80 +68,126 @@ h1 {
 }
 
 .inputform {
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 
 Button {
   height: 40px;
-  width: 40%;
+  width: 100%;
   border: 1px solid rgb(175, 175, 175);
   outline: none;
   margin: 20px 0px;
+  cursor: pointer;
 }
 
-input,textarea,
+input,
 select {
   height: 40px;
+}
+
+input,
+textarea,
+select {
   width: 95%;
-  margin: 20px 0px;
-  /* box-shadow: 0px 0px 18px 0px rgb(231, 231, 231); */
   border: 1px solid rgb(175, 175, 175);
   outline: none;
-  padding-left: 10px;
+  padding: 6px;
   margin-bottom: 10px;
 }
 
 input:focus::placeholder {
   color: transparent;
 }
-
-select {
-  width: 98% !important;
+textarea:focus::placeholder {
+  color: transparent;
 }
 
-
 .tasklist {
+  margin-left: 29%;
   padding: 2rem;
   width: 70%;
 }
 .tasklist > ul {
   list-style: none;
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+  height: 400px;
 }
-.tasksview > li > ul {
+
+.tasksview > a > li > ul {
   list-style: none;
   padding: 0px;
+}
+.tasksview > a > li > ul > li {
+  margin-bottom: 10px;
+  overflow: hidden;
 }
 
 .tasksview {
   background-color: #fff;
   display: flex;
   flex-flow: column;
+  justify-content: space-between;
   margin-top: 0.8rem;
   padding: 1rem;
   box-shadow: 0px 0px 8px 0px rgb(201, 201, 201);
 }
-.tasksview > li {
+.tasksview > a > li {
   text-transform: capitalize;
 }
 
 .taskbuttonsdiv {
-  display: flex;
   width: 100%;
-  justify-content: space-between;
 }
 
-.task-btn {
-  width: 45% !important;
-  height: 30px;
-  margin:0px;
-}
 .delete-btn {
-    margin:0px;
-  height: 30px;
+  border: 1px solid red;
+  position:relative;
+  top: -40px;
   width: 100%;
+}
+
+.tasklist-container {
+
+  justify-content: start !important;
+  overflow-y: scroll;
+
+}
+
+
+textarea {
+  vertical-align: middle;
+}
+
+label {
+  display: inline-block;
+  width: 75px;
+  font-size:13px;
+}
+
+.edit-task-list {
+  /* display:flex; */
+
+}
+
+.add-new-task {
+  margin-bottom:4rem;
+}
+
+.add-new-task h2 {
+  margin-bottom: 2rem;
+}
+
+.add-new-task input,
+.add-new-task .due-date,
+.add-new-task select,
+.add-new-task textarea {
+  width: 72% !important;
+}
+
+.type-text-label {
+  width: 71px !important;
 }
 
 @media only screen and (max-width: 500px) {

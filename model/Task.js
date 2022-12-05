@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const taskSchema = new mongoose.Schema({
-    task: {
+    taskName: {
         type: String,
         required: true
     },
@@ -11,18 +11,23 @@ const taskSchema = new mongoose.Schema({
     },
     periodType: {
         type:String,
-        required:true
+        // required:true
     },
-    period: {
+    dueDate: {
         type:String,
-        required:true
+        // required:true
     },
-    taskListName: {
-        type: mongoose.Types.ObjectId,
-        ref: 'task'
+    isActive:{
+        type:Boolean,
+        default:true
+    },
+    taskList: {
+        type:mongoose.Types.ObjectId,
+        required: true,
+        ref: 'taskList'
     }
 })
 
-const Task = mongoose.model('taskList', taskSchema);
+const Task = mongoose.model('tasks', taskSchema);
 
 module.exports = Task;

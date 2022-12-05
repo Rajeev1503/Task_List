@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Tasks_Schema = new mongoose.Schema({
+const TaskListSchema = new mongoose.Schema({
     taskListName: {
         type: String,
         required: true
@@ -16,10 +16,10 @@ const Tasks_Schema = new mongoose.Schema({
     tasks: [{
         type:mongoose.Types.ObjectId,
         required: true,
-        ref: 'task'
+        ref: 'tasks'
     }]
 })
 
-const TaskList = mongoose.model('taskList', Tasks_Schema);
+const TaskList = mongoose.model('taskList', TaskListSchema);
 
 module.exports = TaskList;
