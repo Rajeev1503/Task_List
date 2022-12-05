@@ -40,7 +40,6 @@
   }
 
   .create-task-container-mobile {
-    clear: both;
     display: flex !important;
     flex-flow: column !important;
     justify-content: center;
@@ -78,8 +77,8 @@
 
   .tasklist {
     margin: auto auto;
-    margin-top: 0rem;
-    width: 95%;
+    margin-bottom: 4rem;
+    width: 90%;
     height: 100%;
     padding: 0.5rem 0.5rem;
   }
@@ -109,4 +108,10 @@
   .type-text-label {
     width: 71px !important;
   }
+
+  .tasks-action-buttons{
+    width:15%;
+  }
+
+
 }
