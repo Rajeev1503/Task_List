@@ -1,23 +1,64 @@
 <div class="tasklist alltasks">
   <% if(allTasks.length===0) { %>
-    <h2>No Task Found</h2>
-  <%} else {%> 
-  <ul>
-    
-    <% for(let task of allTasks) { %>
-    <div class="tasksview">
-        <li>
-          <ul>
-            <li>Name: <%= task.taskName %></li>
-            <li>Description: <%= task.description %></li>
-            <% if (taskList.isActive) { %>
-            <p style="color: green">Active</p>
-            <%} else { %>
-            <p style="color: red">Active</p>
-            <% } %>
-          </ul>
-        </li>
+  <h2>No Task Found</h2>
+  <%} else {%>
+  <ul class="unordered-list-for-tasks-grid">
+    <% for(let task of allTasks) { %> <% if (task.isActive) { %>
+    <div
+      class="tasksview tasks-grid-layout"
+      style="border-left: 5px solid #fa5"
+    >
+      <li>
+        <ul>
+          <li>Name: <%= task.taskName %></li>
+          <li>Description: <%= task.description %></li>
+          <li>Due Date: <%= task.dueDate %></li>
+          <li>Period Type: <%= task.periodType %></li>
+          <li>Status: <span style="color: #fa5">Pending</span></li>
+        </ul>
+      </li>
+      <div class="tasks-action-buttons">
+        <div style="background-color: red">
+          <a href="/api/createtask/<%= taskList._id %>/<%= task._id %>/delete"
+            ><i class="fa-solid fa-trash fa-lg"></i
+          ></a>
+        </div>
+        <div style="background-color: green">
+          <a
+            href="/api/createtask/<%= taskList._id %>/<%= task._id %>?isactive=false"
+            ><i class="fa-solid fa-check fa-lg"></i
+          ></a>
+        </div>
+      </div>
     </div>
-    <% } }%>
+    <%} else { %>
+    <div
+      class="tasksview tasks-grid-layout"
+      style="border-left: 5px solid green"
+    >
+      <li>
+        <ul>
+          <li>Name: <%= task.taskName %></li>
+          <li>Description: <%= task.description %></li>
+          <li>Due Date: <%= task.dueDate %></li>
+          <li>Period Type: <%= task.periodType %></li>
+          <li>Status: <span style="color: green">Completed</span></li>
+        </ul>
+      </li>
+      <div class="tasks-action-buttons">
+        <div style="background-color: red">
+          <a href="/api/createtask/<%= taskList._id %>/<%= task._id %>/delete"
+            ><i class="fa-solid fa-trash fa-lg"></i
+          ></a>
+        </div>
+        <div style="background-color: #fa5">
+          <a
+            href="/api/createtask/<%= taskList._id %>/<%= task._id %>?isactive=true"
+            ><i class="fa-solid fa-xmark fa-lg"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+    <% } }%> <%}%>
   </ul>
 </div>

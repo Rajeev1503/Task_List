@@ -14,7 +14,7 @@
         <%- include('./Components/addtask', {taskList}); -%>
         <div class="close-button" onClick=`${mobileMenuHandler(false)}`><span>Close</span></div>
       </div>
-      <%- include('./Components/tasks', {allTasks}) -%>
+      <%- include('./Components/tasks', {allTasks, taskList}) -%>
 
     </div>
   </body>

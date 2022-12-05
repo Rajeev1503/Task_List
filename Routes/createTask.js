@@ -3,25 +3,17 @@ const router = express.Router();
 const { check, validationResult } = require("express-validator");
 const {
   createNewTask,
-  showAllTasks,
-  retrieveTaskid,
+  updateTask,
+  getTask,
+  deleteTask,
 } = require("../Controller/createTask-controller");
 const { getTaskList } = require("../Controller/createTaskList-controller");
 
-router.param("taskListId",getTaskList);
-
-// router.param("tasklistnameId", getUserById);
-
-// router.get("/createtask", showAllTasks);
+router.param("taskListId", getTaskList);
+router.param("taskId", getTask);
 
 router.post("/createtasklist/:taskListId/task", createNewTask);
-
-// router.get('/createtask/:id', taskListPage);
-
-// router.get('/createtask/:id/edit', editTask);
-
-// router.put('/createtask/:id', saveEditedTask);
-
-// router.delete('/createtask/:id', deleteTaskList);
+router.get("/createtask/:taskListId/:taskId", updateTask);
+router.get("/createtask/:taskListId/:taskId/delete", deleteTask);
 
 module.exports = router;

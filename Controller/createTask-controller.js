@@ -4,16 +4,15 @@ const { check, validationResult } = require("express-validator");
 const TaskList = require("../model/TaskList");
 const Task = require("../model/Task");
 
-// exports.showAllTasks = async (req, res) => {
-//   const allTasks = await Task.find({});
-//   if (!allTasks) {
-//     res.status(404).json({
-//       error: "Task not Found",
-//     });
-//   }
-
-//   res.render("tasks", { allTasks });
-// };
+exports.getTask = (req, res, next, id) => {
+  Task.findById(id).exec((err, task) => {
+    if (err || !task) {
+      return res.status(404);
+    }
+    req.Task = task;
+    next();
+  });
+};
 
 exports.createNewTask = async (req, res) => {
   const currTaskList = await TaskList.findById(req.TaskList._id);
@@ -38,30 +37,25 @@ exports.createNewTask = async (req, res) => {
   });
 };
 
-// exports.taskListPage = async (req, res) => {
-//   const { id } = req.params;
-//   const getTaskList = await TaskList.findById(id);
-//   res.render("tasklist", { getTaskList });
-// };
+exports.updateTask = (req, res) => {
+  const isActive = req.query.isactive;
+  Task.updateOne(
+    { _id: req.Task._id },
+    { $set: { isActive: isActive } },
+    (err) => {
+      if (err) {
+        res.status(400).redirect(`/api/createtasklist/${req.TaskList._id}`);
+      }
+      res.status(200).redirect(`/api/createtasklist/${req.TaskList._id}`);
+    }
+  );
+};
 
-// exports.editTask = async (req, res) => {
-//   const { id } = req.params;
-//   const editTask = await TaskList.findById(id);
-//   res.render("edit", { editTask });
-// };
-
-// exports.saveEditedTask = async (req, res) => {
-//   const { id } = req.params;
-//   const editedTask = await TaskList.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
-//   res.redirect('/createtasklist');
-// };
-
-// exports.deleteTaskList = async (req, res) => {
-//   const { id } = req.params;
-//   try {
-//     const deletedTask = await TaskList.findByIdAndDelete(id);
-//     res.status(200).redirect("/createTaskList");
-//   } catch (err) {
-//     return res.status(400).redirect("/createTaskList");
-//   }
-// };
+exports.deleteTask = async (req, res) => {
+    Task.findByIdAndDelete(req.Task._id).exec((err)=>{
+      if(err){
+        return res.status(400).redirect(`/api/createtasklist/${req.TaskList._id}`);
+      }
+      res.status(200).redirect(`/api/createtasklist/${req.TaskList._id}`);
+    });
+  };
