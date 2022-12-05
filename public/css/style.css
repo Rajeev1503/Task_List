@@ -196,12 +196,13 @@ label {
 
 @media only screen and (max-width: 500px) {
   .container {
-    height: 100%;
-    width: 100%;
-    padding: 0px !important;
-    box-shadow: none;
-    border-radius: none;
+    flex-flow:column;
   }
+
+  .create-task-container{
+    display:none;
+  }
+
   h1 {
     margin-top: 2rem !important;
   }
@@ -210,12 +211,17 @@ label {
     margin: auto auto;
     margin-top: 3rem;
     width: 95%;
-    height: 55%;
+    height: 100%;
     padding: 0.5rem 0.5rem;
+    margin-left: 0%;
+  }
+
+  .tasklist > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .tasksview {
-    height: 35px;
+    height: auto;
     margin-top: 1.2rem;
   }
   input {
