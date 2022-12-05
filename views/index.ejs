@@ -2,8 +2,13 @@
 <html lang="en">
       <%- include('./Partials/head', {title: "Todo App"}); -%>
       <body>
+        <%- include('./Shared/navbar'); -%>
         <div class="container">
-      <div class="create-task-container">
+          <div class="mobile-menu-container">
+            <%- include('./Shared/mobiletopmenu'); -%>
+          </div>
+          
+      <div class="create-task-container create-task-container-mobile" id="mobilemenuhandler">
         <h1>Create New Task List</h1>
         <form method="POST" action="/api/createtasklist" class="inputform">
           <input
@@ -23,6 +28,8 @@
           <br />
           <button class="submit">Submit</button>
         </form>
+        <div class="close-button" onClick=`${mobileMenuHandler(false)}`><span>Close</span></div>
+        
       </div>
 
       <div class="tasklist">

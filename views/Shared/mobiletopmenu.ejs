@@ -1,0 +1,17 @@
+<div class="mobile-menu-button-wrapper">
+  <span class="mobilemenu-buttons" onClick=`${mobileMenuHandler(true)}`
+    ><i class="fa-solid fa-plus"></i> &nbsp;Create New Task List</span
+  >
+</div>
+<script>
+  function mobileMenuHandler(openClose) {
+    let openCloseHelper=openClose;
+    let createTaskContainer = document.getElementById("mobilemenuhandler");
+    if (openCloseHelper===true)
+      {
+        createTaskContainer.classList.add('create-task-container-mobile-width')
+      } else {
+        createTaskContainer.classList.remove('create-task-container-mobile-width')
+    }
+  }
+</script>

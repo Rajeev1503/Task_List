@@ -2,6 +2,7 @@
 <html lang="en">
   <%- include('./Partials/head', {title: "Todo App"}); -%>
   <body>
+    <%- include('./Shared/navbar'); -%>
     <div class="container">
       <div class="create-task-container tasklist-container">
         <%- include('./Components/edit', {taskList}); -%>

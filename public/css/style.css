@@ -1,25 +1,27 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css");
+
 * {
   padding: 0px;
   margin: 0px;
 }
 /* width */
 ::-webkit-scrollbar {
-width: 3px;
+  width: 3px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-background: rgb(28, 28, 28);
-height:10px;
-/* border-radius: 10px; */
+  background: rgb(28, 28, 28);
+  height: 10px;
+  /* border-radius: 10px; */
 }
 ::-webkit-scrollbar-track {
-background:rgb(224, 224, 224)
+  background: rgb(224, 224, 224);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-background: rgb(36, 36, 36);
+  background: rgb(36, 36, 36);
 }
 
 body,
@@ -32,6 +34,36 @@ html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.navbar-container {
+  position: fixed;
+  top: 0px;
+  background-color: rgb(22, 22, 22);
+  width: 100%;
+  padding: 0.5rem;
+  z-index: 1;
+}
+
+.navbar-wrapper {
+  margin: auto auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  justify-items: center;
+  align-items: center;
+  color: white;
+}
+
+.account-container ul {
+  display: flex;
+  flex-flow: row;
+  list-style: none;
+}
+.account-container ul li {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 0.2rem;
+}
+
 h1 {
   text-transform: capitalize;
   margin: 0px;
@@ -40,6 +72,10 @@ h1 {
 a {
   text-decoration: none;
   color: black;
+}
+
+.mobile-menu-container {
+  display: none;
 }
 
 .container {
@@ -55,12 +91,24 @@ a {
   top: 0;
   left: 0px;
   height: 100%;
-  display: flex;
+  display: flex !important;
   flex-flow: column;
   justify-content: center;
   box-shadow: 0px 0px 18px 0px rgb(167, 167, 167);
   width: 25%;
   padding: 2rem;
+}
+
+.create-task-container-mobile {
+  display: none;
+}
+
+.create-task-container-mobile-width {
+  display: none;
+}
+
+.close-button {
+  display: none;
 }
 
 h1 {
@@ -74,7 +122,8 @@ h1 {
 Button {
   height: 40px;
   width: 100%;
-  border: 1px solid rgb(175, 175, 175);
+  background-color: rgb(22, 22, 22);
+  color: white;
   outline: none;
   margin: 20px 0px;
   cursor: pointer;
@@ -105,7 +154,8 @@ textarea:focus::placeholder {
 .tasklist {
   margin-left: 30%;
   width: 65%;
-  padding:2rem;
+  margin-top: 2rem;
+  padding: 2rem;
 }
 
 .tasklist > ul {
@@ -115,8 +165,7 @@ textarea:focus::placeholder {
   gap: 1rem;
 }
 
-
-.tasksview >a> li > ul {
+.tasksview > a > li > ul {
   list-style: none;
   padding: 0px;
 }
@@ -124,7 +173,7 @@ textarea:focus::placeholder {
   list-style: none;
   padding: 0px;
 }
-.tasksview >a> li > ul > li {
+.tasksview > a > li > ul > li {
   margin-bottom: 10px;
   overflow: hidden;
 }
@@ -152,18 +201,17 @@ textarea:focus::placeholder {
 
 .delete-btn {
   border: 1px solid red;
-  position:relative;
+  background-color: rgba(255, 0, 0, 0.63);
+  position: relative;
   top: -40px;
-  width: 100%;
+  width: 30%;
 }
 
 .tasklist-container {
-
+  margin-top: 3rem;
   justify-content: start !important;
   overflow-y: scroll;
-
 }
-
 
 textarea {
   vertical-align: middle;
@@ -172,11 +220,11 @@ textarea {
 label {
   display: inline-block;
   width: 75px;
-  font-size:13px;
+  font-size: 13px;
 }
 
 .add-new-task {
-  margin-bottom:4rem;
+  margin-bottom: 4rem;
 }
 
 .add-new-task h2 {
@@ -194,13 +242,68 @@ label {
   width: 71px !important;
 }
 
-@media only screen and (max-width: 500px) {
-  .container {
-    flex-flow:column;
+.create-new-task-button-mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 800px) {
+  .mobile-menu-container {
+    display: block;
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+    text-align: center;
   }
 
-  .create-task-container{
-    display:none;
+  .mobile-menu-button-wrapper {
+    margin: auto auto;
+    background-color: aliceblue;
+    width: 50%;
+    padding: 1rem;
+  }
+
+  .account-container ul li span {
+    display: none;
+  }
+
+  .container {
+    flex-flow: column;
+  }
+
+  .create-task-container {
+    display: none;
+  }
+  .create-task-container-mobile {
+    clear: both;
+    display: flex !important;
+    flex-flow: column !important;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    width: 0px;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding: 0px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+  }
+
+  .create-task-container-mobile-width {
+    width:70% !important;
+    padding:2rem;
+  }
+
+  .create-task-container-mobile form {
+    display: flex !important;
+    flex-flow: column !important;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .close-button {
+    display: block;
+    width: 100%;
+    text-align: right;
+    margin-bottom: 6rem;
   }
 
   h1 {
@@ -209,11 +312,10 @@ label {
 
   .tasklist {
     margin: auto auto;
-    margin-top: 3rem;
+    margin-top: 0rem;
     width: 95%;
     height: 100%;
     padding: 0.5rem 0.5rem;
-    margin-left: 0%;
   }
 
   .tasklist > ul {
@@ -223,10 +325,6 @@ label {
   .tasksview {
     height: auto;
     margin-top: 1.2rem;
-  }
-  input {
-    height: 45px;
-    width: 75%;
   }
   .inputform {
     margin: auto auto;
