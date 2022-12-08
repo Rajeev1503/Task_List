@@ -1,7 +1,7 @@
 <div class="taskbuttonsdiv">
     <form
       class="task-btn"
-      action="/api/createtasklist/<%=taskList._id%>?_method=DELETE"
+      action="/createtasklist/<%=taskList._id%>?_method=DELETE"
       method="POST"
     >
       <button class="delete-btn">Delete Task List</button>
@@ -11,7 +11,7 @@
     <div>
     <h1><%=taskList.taskListName%></h1>
     <form
-      action="/api/createtasklist/<%=taskList._id%>?_method=PUT"
+      action="/createtasklist/<%=taskList._id%>?_method=PUT"
       method="POST"
       class="inputform"
     >

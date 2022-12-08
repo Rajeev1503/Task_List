@@ -31,9 +31,9 @@ exports.createNewTask = async (req, res) => {
     if (err) {
       return res
         .status(400)
-        .redirect(`/api/createtasklist/${req.TaskList._id}`);
+        .redirect(`/createtasklist/${req.TaskList._id}`);
     }
-    res.status(200).redirect(`/api/createtasklist/${req.TaskList._id}`);
+    res.status(200).redirect(`/createtasklist/${req.TaskList._id}`);
   });
 };
 
@@ -44,9 +44,9 @@ exports.updateTask = (req, res) => {
     { $set: { isActive: isActive } },
     (err) => {
       if (err) {
-        res.status(400).redirect(`/api/createtasklist/${req.TaskList._id}`);
+        res.status(400).redirect(`/createtasklist/${req.TaskList._id}`);
       }
-      res.status(200).redirect(`/api/createtasklist/${req.TaskList._id}`);
+      res.status(200).redirect(`/createtasklist/${req.TaskList._id}`);
     }
   );
 };
@@ -54,8 +54,8 @@ exports.updateTask = (req, res) => {
 exports.deleteTask = async (req, res) => {
     Task.findByIdAndDelete(req.Task._id).exec((err)=>{
       if(err){
-        return res.status(400).redirect(`/api/createtasklist/${req.TaskList._id}`);
+        return res.status(400).redirect(`/createtasklist/${req.TaskList._id}`);
       }
-      res.status(200).redirect(`/api/createtasklist/${req.TaskList._id}`);
+      res.status(200).redirect(`/createtasklist/${req.TaskList._id}`);
     });
   };

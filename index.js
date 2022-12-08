@@ -1,20 +1,23 @@
+require("dotenv").config();
 const express = require('express')
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const path = require('path');
 const bodyParser = require("body-parser");
-
+const cookieParser = require('cookie-parser');
 
 // required routes
 const createTaskList = require('./Routes/createTaskList');
 const createTask = require('./Routes/createTask');
+const auth = require('./Routes/auth');
 
 const app = express()
 const port = process.env.PORT || 8000
-const DB =
-  "mongodb+srv://rajeev:1409rajeev@cluster0.ronsn.mongodb.net/tasklist?retryWrites=true&w=majority";
+const DB = process.env.DATABASE;
+  
 
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.set('view engine', 'ejs')
 app.use(methodOverride('_method'))
 app.use(express.urlencoded({extended: true}));
@@ -31,8 +34,9 @@ mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true })
         console.log(err)
 })
 
-app.use('/api',createTaskList);
-app.use('/api',createTask);
+app.use(auth);
+app.use(createTaskList);
+app.use(createTask);
 
 app.get('/', (req,res)=> {
   res.redirect('/api/createtasklist');

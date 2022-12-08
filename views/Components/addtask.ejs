@@ -1,5 +1,5 @@
 <div class="add-new-task">
-    <form method="POST" action="/api/createtasklist/<%=taskList._id%>/task" class="inputform">
+    <form method="POST" action="/createtasklist/<%=taskList._id%>/task" class="inputform">
       <h2>Add Task</h2>
 
       <label for="tasksname" class="type-text-label">Task Name:</label>
@@ -24,8 +24,8 @@
         class="due-date"
       /><br />
       <label for="periodtype">Period Type:</label
-      ><select name="periodType" id="periodtype" form="periodtype">
-        <option value="Weekly">Weekly</option>
+      ><select name="periodType">
+        <option value="Weekly" selected>Weekly</option>
         <option value="Monthly">Monthly</option>
         <option value="Quaterly">Quaterly</option>
         <option value="Yearly">Yearly</option></select

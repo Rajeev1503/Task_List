@@ -1,0 +1,35 @@
+<div class="signup-wrapper authentication-forms">
+  <div class="card-container">
+    <%- include('./utils/card') -%>
+  </div>
+  <div>
+    <h1>Create New Account</h1>
+    <form method="POST" action="/signup" class="inputform">
+        <input
+          type="text"
+          name="fullname"
+          placeholder="Enter Your Full Name"
+        />
+        <input
+          type="text"
+          name="username"
+          placeholder="Enter Your Username"
+        />
+        <input
+          type="text"
+          name="email"
+          placeholder="Enter Your Email"
+        />
+        <input
+        type="password"
+          name="password"
+          placeholder="Enter Your Password"
+          autocomplete="off"
+        />
+        <br />
+  
+        <br />
+        <button class="submit">Submit</button>
+      </form>
+      </div>
+</div>

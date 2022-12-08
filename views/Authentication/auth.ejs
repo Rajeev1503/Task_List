@@ -1,0 +1,16 @@
+<%- include('../Partials/header', {title: "Login/Signup - BeUpdated"}); -%>
+<%- include('../Shared/navbar', {path: "auth"}); -%>
+
+<div class="authentication-wrapper">
+    <div class="card-container">
+        <%- include('./utils/card') -%>
+      </div>
+      <div class="login-form-wrapper">
+          <div class="login-container "><%- include('./login'); -%></div>
+          <div class="or-tag"><p>or</p></div>
+          <div class="signup-container"><%- include('./signup'); -%></div>
+      </div>
+    
+</div>
+
+<%- include('../Partials/footer'); -%>

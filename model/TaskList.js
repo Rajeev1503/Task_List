@@ -15,8 +15,11 @@ const TaskListSchema = new mongoose.Schema({
     },
     tasks: [{
         type:mongoose.Types.ObjectId,
-        required: true,
         ref: 'tasks'
+    }],
+    creator: [{
+        type:mongoose.Types.ObjectId,
+        ref:'User',
     }]
 })
 

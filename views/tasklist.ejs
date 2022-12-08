@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+
   <%- include('./Partials/header', {title: "Task List - BeUpdated" }); -%>
-  <body>
-    <%- include('./Shared/navbar'); -%>
+    <%- include('./Shared/navbar', {path:"tasklist"}); -%>
     <div class="container">
       <div class="mobile-menu-container">
         <div class="mobile-top-heading"><h1><%=taskList.taskListName%></h1></div>
@@ -17,5 +15,3 @@
       <%- include('./Components/tasks', {allTasks, taskList}) -%>
 
     </div>
-  </body>
-</html>
