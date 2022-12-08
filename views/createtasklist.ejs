@@ -1,4 +1,5 @@
-<%- include('./Shared/navbar', {path:"index"}); -%>
+<%- include('./Partials/header', {title: "Task List - BeUpdated"}); -%>
+<%- include('./Shared/navbar', {path:"TaskList"}); -%>
 <div class="container">
   <div class="mobile-menu-container">
     <%- include('./Shared/mobiletopmenu', {page:"index"}); -%>
@@ -8,12 +9,12 @@
     class="create-task-container create-task-container-mobile"
     id="mobilemenuhandler"
   >
-    <h1>Create New Task List</h1>
+    <h3>Create New Task List</h3>
     <form method="POST" action="/createtasklist" class="inputform">
       <input
         type="text"
         name="taskListName"
-        placeholder="Task name"
+        placeholder="Task List Name"
         autocomplete="off"
       />
       <textarea
@@ -37,7 +38,7 @@
       <% for(let taskList of allTaskList) { %>
       <a href="/createtasklist/<%=taskList._id%>">
         <% if (taskList.isActive) { %>
-        <div class="tasksview" style="border-left: 5px solid green">
+        <div class="tasksview">
           <li>
             <ul>
               <li>Name: <%= taskList.taskListName %></li>
@@ -52,7 +53,7 @@
           </li>
         </div>
         <%} else { %>
-        <div class="tasksview" style="border-left: 5px solid #fa5">
+        <div class="tasksview">
           <li>
             <ul>
               <li>Name: <%= taskList.taskListName %></li>
@@ -72,3 +73,4 @@
     </ul>
   </div>
 </div>
+<%- include('./Partials/footer'); -%>

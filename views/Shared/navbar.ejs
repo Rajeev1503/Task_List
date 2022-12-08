@@ -12,12 +12,7 @@
     </div>
     <div class="account-container">
       <ul>
-        <!-- <li>
-          <a href="/auth" style="color: white"
-            ><i class="fa-solid fa-user"></i> &nbsp;<span>Account</span>
-            &nbsp;</a
-          >
-        </li> -->
+        
         <%if(path==="auth") { %>
         <li>
           <a href="/auth" style="color: white">
@@ -27,10 +22,9 @@
           </li>
           <%} else { %>
         <li>
-          <a href="/logout" style="color: white">
-            &nbsp;<i class="fa-solid fa-right-from-bracket"></i> &nbsp;<span
-              >Logout</span
-            ></a
+          <a href="/account" style="color: white"
+            ><i class="fa-solid fa-user"></i> &nbsp;<span>Account</span>
+            &nbsp;</a
           >
         </li>
         <%}%>

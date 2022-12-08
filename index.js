@@ -10,6 +10,7 @@ const cookieParser = require('cookie-parser');
 const createTaskList = require('./Routes/createTaskList');
 const createTask = require('./Routes/createTask');
 const auth = require('./Routes/auth');
+const account = require('./Routes/account');
 
 const app = express()
 const port = process.env.PORT || 8000
@@ -35,6 +36,7 @@ mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true })
 })
 
 app.use(auth);
+app.use(account);
 app.use(createTaskList);
 app.use(createTask);
 

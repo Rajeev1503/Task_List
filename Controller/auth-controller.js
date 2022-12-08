@@ -41,14 +41,7 @@ exports.login = async (req, res) => {
 };
 
 exports.signup = async (req, res) => {
-  const { username, email, fullname, password } = req.body;
-  const encyptedPassword = await bcrypt.hash(password, 10);
-  const newUser = new User({
-    fullname,
-    username,
-    email,
-    password: encyptedPassword,
-  });
+  const newUser = new User(req.body);
   await newUser.save((err) => {
     if (err) {
       return res.status(400).redirect("/");

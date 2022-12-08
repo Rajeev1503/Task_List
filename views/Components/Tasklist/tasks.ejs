@@ -6,7 +6,6 @@
     <% for(let task of allTasks) { %> <% if (task.isActive) { %>
     <div
       class="tasksview tasks-grid-layout"
-      style="border-left: 5px solid #fa5"
     >
       <li>
         <ul>
@@ -18,12 +17,12 @@
         </ul>
       </li>
       <div class="tasks-action-buttons">
-        <div style="background-color: red">
+        <div class="trash-button">
           <a href="/createtask/<%= taskList._id %>/<%= task._id %>/delete"
             ><i class="fa-solid fa-trash fa-lg"></i
           ></a>
         </div>
-        <div style="background-color: green">
+        <div class="check-button">
           <a
             href="/createtask/<%= taskList._id %>/<%= task._id %>?isactive=false"
             ><i class="fa-solid fa-check fa-lg"></i
@@ -34,7 +33,6 @@
     <%} else { %>
     <div
       class="tasksview tasks-grid-layout"
-      style="border-left: 5px solid green"
     >
       <li>
         <ul>
@@ -46,12 +44,12 @@
         </ul>
       </li>
       <div class="tasks-action-buttons">
-        <div style="background-color: red">
+        <div class="trash-button">
           <a href="/createtask/<%= taskList._id %>/<%= task._id %>/delete"
             ><i class="fa-solid fa-trash fa-lg"></i
           ></a>
         </div>
-        <div style="background-color: #fa5">
+        <div class="check-button">
           <a
             href="/createtask/<%= taskList._id %>/<%= task._id %>?isactive=true"
             ><i class="fa-solid fa-xmark fa-lg"></i

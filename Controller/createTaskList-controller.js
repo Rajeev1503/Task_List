@@ -5,6 +5,7 @@ const TaskList = require("../model/TaskList");
 const Task = require("../model/Task");
 const User = require("../model/User");
 
+
 exports.getTaskList = (req, res, next, id) => {
   TaskList.findById(id).exec((err, taskList) => {
     if (err || !taskList) {
@@ -24,7 +25,7 @@ exports.showAllTaskList = async (req, res) => {
   if (!allTaskList) {
     return res.status(404);
   }
-  res.status(200).render("index", { allTaskList });
+  res.status(200).render("createtasklist", { allTaskList });
 };
 
 exports.createTaskList = async (req, res) => {
@@ -87,17 +88,3 @@ exports.deleteTaskList = async (req, res) => {
     return res.status(400).redirect("/");
   }
 };
-
-// exports.showAllTasks = async (req,res) => {
-//   const taskList = await TaskList.findById(req.TaskList._id)
-//     if(err || !taskList) {
-//       return res.status(404);
-//     }
-//   const allTasks = await Task.find({tasklist:req.TaskList._id});
-//     if(!allTasks) {
-//       return res.status(404);
-//     }
-//     allTasks.populate('taskList');
-//     res.status(200).render("tasklist", { taskList }, {allTasks});
-
-// };
