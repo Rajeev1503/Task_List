@@ -1,17 +1,20 @@
+<%- include('./Partials/header', {title: "Task List - BeUpdated" }); -%> <%-
+include('./Shared/navbar', {path:"tasklist"}); -%>
+<div class="container">
+  <div class="mobile-menu-container">
+    <div class="mobile-top-heading"><h1><%=taskList.taskListName%></h1></div>
 
-  <%- include('./Partials/header', {title: "Task List - BeUpdated" }); -%>
-    <%- include('./Shared/navbar', {path:"tasklist"}); -%>
-    <div class="container">
-      <div class="mobile-menu-container">
-        <div class="mobile-top-heading"><h1><%=taskList.taskListName%></h1></div>
-
-        <%- include('./Shared/mobiletopmenu', {page:"tasklist"}); -%>
-      </div>
-      <div class="create-task-container tasklist-container create-task-container-mobile" id="mobilemenuhandler">
-        <%- include('./Components/edit', {taskList}); -%>
-        <%- include('./Components/addtask', {taskList}); -%>
-        <div class="close-button" onClick=`${mobileMenuHandler(false)}`><span>Close</span></div>
-      </div>
-      <%- include('./Components/tasks', {allTasks, taskList}) -%>
-
+    <%- include('./Shared/mobiletopmenu', {page:"tasklist"}); -%>
+  </div>
+  <div
+    class="create-task-container tasklist-container create-task-container-mobile"
+    id="mobilemenuhandler"
+  >
+    <%- include('./Components/edit', {taskList}); -%> <%-
+    include('./Components/addtask', {taskList}); -%>
+    <div class="close-button" onClick="`${mobileMenuHandler(false)}`">
+      <span>Close</span>
     </div>
+  </div>
+  <%- include('./Components/tasks', {allTasks, taskList}) -%>
+</div>
