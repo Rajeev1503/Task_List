@@ -24,12 +24,17 @@ const User_Schema = new mongoose.Schema({
     type: String,
     default: "user",
   },
-
+  ongoingprojects: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "taskList",
+    }
+  ],
   createdTaskList: [
     {
       type: mongoose.Types.ObjectId,
       ref: "taskList",
-    },
+    }
   ],
 });
 

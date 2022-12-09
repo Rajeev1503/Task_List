@@ -7,6 +7,7 @@
   --blue: #0d1117;
   --white: #ffffff;
   --text: grey;
+  --lighttext: lightgrey;
   --border: #17202b;
 }
 
@@ -162,6 +163,21 @@ textarea:focus::placeholder {
   color: transparent;
 }
 
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: 40px;
+  left: 27%;
+  position: absolute;
+  right: 0;
+  top: 75.8%;
+  width: 250px;
+}
+
+
 .tasklist {
   margin-left: 28.5%;
   width: 65%;
@@ -214,9 +230,8 @@ textarea:focus::placeholder {
 .delete-btn {
   border: 1px solid rgba(255, 0, 0, 0.247);
   color: var(--text);
-  position: relative;
-  top: -40px;
-  width: 30%;
+  margin-bottom:5rem;
+  width: 100%;
 }
 
 .tasklist-container {
@@ -236,8 +251,16 @@ label {
 }
 
 .add-new-task {
-  margin-bottom: 4rem;
+  border-top:1px solid var(--border);
+  padding-top:2rem;
+  margin-bottom: 2rem;
   width: 100%;
+}
+
+.add-teammembers{
+  
+  border-top:1px solid var(--border);
+  padding-top:2rem;
 }
 
 .add-new-task h2 {
@@ -265,6 +288,15 @@ label {
 .tasks-grid-layout > li {
   width: 80%;
 }
+
+.tasks-grid-layout>li > ul >li > span {
+  color: var(--lighttext);
+}
+.tasks-grid-layout>li > ul >li {
+  color: var(--lighttext);
+}
+
+
 
 .tasks-action-buttons {
   height: 100%;

@@ -17,6 +17,10 @@ const TaskListSchema = new mongoose.Schema({
         type:mongoose.Types.ObjectId,
         ref: 'tasks'
     }],
+    teammembers: [{
+        type:mongoose.Types.ObjectId,
+        ref:'User',
+    }],
     creator: [{
         type:mongoose.Types.ObjectId,
         ref:'User',

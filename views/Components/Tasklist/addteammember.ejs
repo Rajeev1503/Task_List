@@ -1,0 +1,36 @@
+<div class="add-teammembers">
+  <div>
+    <h3>Add Team Members</h3>
+    <form
+      action="/createtasklist/<%=taskList._id%>/addteammember"
+      method="POST"
+      class="inputform"
+    >
+      <input
+        type="text"
+        name="teammemberusername"
+        placeholder="Enter Member's Username"
+        autocomplete="off"
+      />
+      <br />
+      <button class="submit">Add</button>
+    </form>
+  </div>
+</div>
+<br>
+<div class="teammembers-list">
+  <h4>Team Members :</h4>
+  <% if(teamMembers.length===0) { %>
+    <h2></h2>
+    <%} else {%>
+        <br />
+        <ul>
+      <% for(let teamMember of teamMembers) { %>
+    <li style="font-size: 12px; padding-left:2rem;">
+        <%=teamMember.fullname%>(<%=teamMember.username%>) &nbsp;<a href="#"
+        ><i class="fa-solid fa-xmark"></i
+      ></a>
+    </li>
+    <%} }%>
+  </ul>
+</div>

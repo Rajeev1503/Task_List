@@ -5,7 +5,6 @@ const TaskList = require("../model/TaskList");
 const Task = require("../model/Task");
 const User = require("../model/User");
 
-
 exports.getTaskList = (req, res, next, id) => {
   TaskList.findById(id).exec((err, taskList) => {
     if (err || !taskList) {
@@ -58,16 +57,48 @@ exports.createTaskList = async (req, res) => {
   });
 };
 
+exports.addTeamMember = async (req, res) => {
+  const { teammemberusername } = req.body;
+  const teamMember = await User.findOne({ username: teammemberusername });
+  if (!teamMember) {
+    return res.status(404).redirect("/");
+  }
+  const taskList = await TaskList.findById(req.TaskList._id);
+  if (!taskList) {
+    return res.status(404).redirect("/");
+  }
+  await taskList.teammembers.push(teamMember);
+  await teamMember.ongoingprojects.push(taskList);
+  teamMember.save((err) => {
+    if (err) {
+      console.log("saving error : " + err);
+    }
+  });
+  taskList.save((err) => {
+    if (err) {
+      return res.status(400).redirect("/");
+    }
+  });
+
+  res.status(200).redirect(`/createtasklist/${req.TaskList._id}`);
+};
+
 exports.taskListPage = async (req, res) => {
   const taskList = await TaskList.findById(req.TaskList._id);
   if (!taskList) {
     return res.status(404);
   }
+
   const allTasks = await Task.find({ taskList: req.TaskList._id });
   if (!allTasks) {
     return res.status(404);
   }
-  res.status(200).render("tasklist", { taskList, allTasks });
+
+  const teamMembers = await User.find({ ongoingprojects: req.TaskList._id });
+  if (!teamMembers) {
+    return res.status(404);
+  }
+  res.status(200).render("tasklist", { taskList, allTasks, teamMembers });
 };
 
 exports.saveEditedTask = async (req, res) => {
