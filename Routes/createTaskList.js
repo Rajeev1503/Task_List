@@ -8,7 +8,6 @@ const { isAuthenticated } = require("../Middleware/auth-middleware");
 
 router.param("taskListId",getTaskList);
 router.param("memberUsername",getTeamMember);
-// router.param("userId",getUser);
 
 router.get('/',isAuthenticated,showAllTaskList);
 
@@ -18,14 +17,14 @@ router.post(
   [check("description", "Description is required").isLength({ min: 1 })], isAuthenticated, createTaskList
   );
   
-  router.post('/createtasklist/:taskListId/addteammember', addTeamMember);
+  router.post('/createtasklist/:taskListId/addteammember',isAuthenticated, addTeamMember);
   
-  router.get('/createtasklist/:taskListId/deletemember/:memberUsername', deleteTeamMember);
+  router.get('/createtasklist/:taskListId/deletemember/:memberUsername',isAuthenticated, deleteTeamMember);
   
   router.get('/createtasklist/:taskListId',isAuthenticated, taskListPage);
   
-  router.put('/createtasklist/:taskListId', saveEditedTask);
+  router.put('/createtasklist/:taskListId',isAuthenticated, saveEditedTask);
   
-  router.delete('/createtasklist/:taskListId', deleteTaskList);
+  router.delete('/createtasklist/:taskListId',isAuthenticated, deleteTaskList);
   
   module.exports = router;

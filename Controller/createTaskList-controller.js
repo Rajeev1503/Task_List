@@ -25,6 +25,9 @@ exports.getTeamMember = (req, res, next, id) => {
 };
 
 exports.showAllTaskList = async (req, res) => {
+  if(!req.user){
+    return res.status(404).redirect("/auth");
+  }
   const user = await User.findById(req.user._id);
   if (!user) {
     return res.status(404).redirect("/auth");
@@ -94,12 +97,28 @@ exports.addTeamMember = async (req, res) => {
 
 exports.deleteTeamMember = async (req, res) => {
 
-  try {
-    const deletedMember = await User.findOneAndDelete({ username: req.teamMember.username });
-    res.status(200).redirect(`/createtasklist/${req.TaskList._id}`);
-  } catch (err) {
-    return res.status(400).redirect(`/createtasklist/${req.TaskList._id}`);
+  const teamMember = await User.findById(req.teamMember._id);
+  if (!teamMember) {
+    return res.status(404).redirect("/");
   }
+  const taskList = await TaskList.findById(req.TaskList._id);
+  if (!taskList) {
+    return res.status(404).redirect("/");
+  }
+  await taskList.teammembers.pull(teamMember);
+  await teamMember.ongoingprojects.pull(taskList);
+  teamMember.save((err) => {
+    if (err) {
+      console.log("saving error : " + err);
+    }
+  });
+  taskList.save((err) => {
+    if (err) {
+      return res.status(400).redirect("/");
+    }
+  });
+
+  res.status(200).redirect(`/createtasklist/${req.TaskList._id}`);
 };
 
 exports.taskListPage = async (req, res) => {
