@@ -14,6 +14,15 @@ exports.getTaskList = (req, res, next, id) => {
     next();
   });
 };
+exports.getTeamMember = (req, res, next, id) => {
+  User.findOne({username:id}).exec((err, teamMember) => {
+    if (err || !teamMember) {
+      return res.status(404);
+    }
+    req.teamMember = teamMember;
+    next();
+  });
+};
 
 exports.showAllTaskList = async (req, res) => {
   const user = await User.findById(req.user._id);
@@ -81,6 +90,16 @@ exports.addTeamMember = async (req, res) => {
   });
 
   res.status(200).redirect(`/createtasklist/${req.TaskList._id}`);
+};
+
+exports.deleteTeamMember = async (req, res) => {
+
+  try {
+    const deletedMember = await User.findOneAndDelete({ username: req.teamMember.username });
+    res.status(200).redirect(`/createtasklist/${req.TaskList._id}`);
+  } catch (err) {
+    return res.status(400).redirect(`/createtasklist/${req.TaskList._id}`);
+  }
 };
 
 exports.taskListPage = async (req, res) => {

@@ -28,7 +28,7 @@
         <ul>
       <% for(let teamMember of teamMembers) { %>
     <li style="font-size: 12px; padding-left:2rem;">
-        <%=teamMember.fullname%>(<%=teamMember.username%>) &nbsp;<a href="#"
+        <%=teamMember.fullname%>(<%=teamMember.username%>) &nbsp;<a href="/createtasklist/<%=taskList._id%>/deletemember/<%=teamMember.username%>"
         ><i class="fa-solid fa-xmark"></i
       ></a>
     </li>
