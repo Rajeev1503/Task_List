@@ -18,11 +18,11 @@
         </ul>
       </li>
       <div class="tasks-action-buttons">
-        <div class="trash-button">
-          <a href="/createtask/<%= taskList._id %>/<%= task._id %>/delete"
-            ><i class="fa-solid fa-trash fa-lg"></i
-          ></a>
-        </div>
+        <% if(isCreator) {%>
+          <div class="trash-button">
+            <a href="/createtask/<%= taskList._id %>/<%= task._id %>/delete"><i class="fa-solid fa-trash fa-lg"></i
+            ></a>
+          </div><%}%>
         <div class="check-button">
           <a
             href="/createtask/<%= taskList._id %>/<%= task._id %>?isactive=false"
@@ -46,11 +46,11 @@
         </ul>
       </li>
       <div class="tasks-action-buttons">
+        <% if(isCreator) {%>
         <div class="trash-button">
-          <a href="/createtask/<%= taskList._id %>/<%= task._id %>/delete"
-            ><i class="fa-solid fa-trash fa-lg"></i
+          <a href="/createtask/<%= taskList._id %>/<%= task._id %>/delete"><i class="fa-solid fa-trash fa-lg"></i
           ></a>
-        </div>
+        </div><%}%>
         <div class="check-button">
           <a
             href="/createtask/<%= taskList._id %>/<%= task._id %>?isactive=true"
