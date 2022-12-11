@@ -1,9 +1,10 @@
 const express= require('express');
-const { login, signup, logout } = require('../Controller/auth-controller');
+const { isAuthenticated } = require('../Middleware/auth-middleware');
 const router = express.Router();
 
-router.get('/account', (req,res)=> {
-    res.render('./Components/Account/account');
+router.get('/account',isAuthenticated, (req,res)=> {
+    const user = req.user;
+    res.render('./Components/Account/account', {user});
 });
 
 module.exports = router;

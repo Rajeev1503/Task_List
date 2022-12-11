@@ -1,7 +1,11 @@
 <div class="account-card-wrapper card-wrapper">
     <div class="card-title">
         <div class="avatar">
-            <span>R</span>
+            <span><%=user.fullname.split('')[0].toUpperCase()%></span>
+        </div>
+        <div class="Users-name">
+          <h1><%=user.fullname%></h1>
+          <p>@<%=user.username%></p>
         </div>       
     </div>
     <div class="account-card-description card-description">

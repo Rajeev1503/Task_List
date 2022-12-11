@@ -402,6 +402,11 @@ label {
   border:1px solid var(--border);
 }
 
+.Users-name{
+  padding-top:1rem;
+  text-transform: capitalize;
+}
+
 .card-description ul {
   display: flex;
   flex-flow: column;
