@@ -1,12 +1,12 @@
 @media only screen and (max-width: 800px) {
   
   .navbar-wrapper {
-    gap:4rem;
+    gap: 4rem;
   }
-  
+
   .mobile-menu-container {
     display: block;
-    margin-top: 5rem;
+    margin-top: 8rem;
     margin-bottom: 1rem;
     text-align: center;
     text-transform: capitalize;
@@ -18,7 +18,8 @@
 
   .mobile-menu-button-wrapper {
     margin: auto auto;
-    background-color: aliceblue;
+    border: 1px solid var(--border);
+    border-radius: 15px;
     width: 50%;
     padding: 1rem;
   }
@@ -42,33 +43,30 @@
   .create-task-container-mobile {
     display: flex !important;
     flex-flow: column !important;
-    justify-content: center;
-    align-items: center;
     width: 0px;
     overflow-x: hidden;
     transition: 0.5s;
     padding: 0px;
     color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255);
   }
 
   .create-task-container-mobile-width {
-    width: 75% !important;
+    width: 80% !important;
     padding: 2rem;
   }
 
   .create-task-container-mobile form {
-    display: flex !important;
-    flex-flow: column !important;
-    justify-content: center;
     width: 100%;
   }
 
   .close-button {
+    position: sticky;
+    top:0px;
+    background:transparent;
     display: block;
     width: 100%;
     text-align: right;
-    margin-bottom: 6rem;
+    margin-bottom: 2rem;
   }
 
   h1 {
@@ -92,26 +90,14 @@
     margin-top: 1.2rem;
   }
 
-  label {
-    display: inline-block !important;
-    width: 75px;
-    font-size: 13px;
+  .tasks-action-buttons {
+    width: 15%;
   }
 
-  .add-new-task input,
-  .add-new-task .due-date,
-  .add-new-task select,
-  .add-new-task textarea {
-    width: 85% !important;
-  }
 
-  .type-text-label {
-    width: 71px !important;
+  .add-teammember-form{
+    display: flex;
+    flex-flow: row;
   }
-
-  .tasks-action-buttons{
-    width:15%;
-  }
-
 
 }

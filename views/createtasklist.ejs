@@ -8,7 +8,9 @@
   <div
     class="create-task-container create-task-container-mobile"
     id="mobilemenuhandler"
-  >
+  ><div class="close-button" onClick="`${mobileMenuHandler(false)}`">
+    <i class="fa-solid fa-xmark fa-2xl"></i>
+  </div>
     <h3>Create New Task List</h3>
     <form method="POST" action="/createtasklist" class="inputform">
       <input
@@ -24,13 +26,10 @@
         rows="4"
       ></textarea>
       <br />
-
       <br />
       <button class="submit">Submit</button>
     </form>
-    <div class="close-button" onClick="`${mobileMenuHandler(false)}`">
-      <span>Close</span>
-    </div>
+    <br>
   </div>
 
   <div class="tasklist">

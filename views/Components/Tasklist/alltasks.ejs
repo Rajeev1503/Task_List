@@ -3,16 +3,18 @@
   <h2>No Task Found</h2>
   <%} else {%>
   <ul class="unordered-list-for-tasks-grid">
-    <% for(let task of allTasks) { %> <% if (task.isActive) { %>
+    <% for(let task of allTasks) { %> 
+      
+      <% if (task.isActive) { %>
+      
     <div
       class="tasksview tasks-grid-layout"
-    >
+    ><a href="/createtasklist/<%= taskList._id %>/<%=task._id%>">
       <li>
         <ul>
           <li>Name: <span><%= task.taskName %></span></li>
           <li>Description: <span><%= task.description %></span></li>
           <li>Due Date: <span><%= task.dueDate %></span></li>
-          <li>Period Type: <span><%= task.periodType %></span></li>
           <li>Task Assigned To: <span>Rajeev (rajeev1503)</span></li>
           <li>Status: <span style="color: #fa5">Pending</span></li>
         </ul>
@@ -25,24 +27,25 @@
           </div><%}%>
         <div class="check-button">
           <a
-            href="/createtask/<%= taskList._id %>/<%= task._id %>?isactive=false"
+            href="/createtask/<%= taskList._id %>/<%= task._id %>/update?isactive=false"
             ><i class="fa-solid fa-check fa-lg"></i
           ></a>
         </div>
       </div>
+    </a>
     </div>
+  
     <%} else { %>
     <div
       class="tasksview tasks-grid-layout"
-    >
+    ><a href="/createtasklist/<%= taskList._id %>/<%=task._id%>">
       <li>
         <ul>
           <li>Name: <span><%= task.taskName %></span></li>
           <li>Description: <span><%= task.description %></span></li>
           <li>Due Date: <span><%= task.dueDate %></span></li>
-          <li>Period Type: <span><%= task.periodType %></span></li>
           <li>Task Assigned To: <span>Rajeev (rajeev1503)</span></li>
-          <li>Status: <span style="color: green">Completed</span></li>
+          <li>Status: <span style="color: green">In Review</span></li>
         </ul>
       </li>
       <div class="tasks-action-buttons">
@@ -53,12 +56,15 @@
         </div><%}%>
         <div class="check-button">
           <a
-            href="/createtask/<%= taskList._id %>/<%= task._id %>?isactive=true"
+            href="/createtask/<%= taskList._id %>/<%= task._id %>/update?isactive=true"
             ><i class="fa-solid fa-xmark fa-lg"></i
           ></a>
         </div>
       </div>
+    </a>
     </div>
-    <% } }%> <%}%>
+  <% }%>
+ <%}%> 
+ <%}%>
   </ul>
 </div>

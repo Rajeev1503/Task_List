@@ -14,9 +14,10 @@
 * {
   padding: 0px;
   margin: 0px;
-  color:rgb(210, 210, 210);
+  color: rgb(210, 210, 210);
   background-color: var(--darkbackground);
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 /* width */
 ::-webkit-scrollbar {
@@ -68,7 +69,13 @@
   gap: 0.2rem;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   text-transform: capitalize;
   color: var(--text);
   font-weight: 500;
@@ -100,7 +107,7 @@ a {
   display: flex !important;
   flex-flow: column;
   justify-content: center;
-  border-right:1px solid var(--border);
+  border-right: 1px solid var(--border);
   width: 22%;
   padding: 2rem;
 }
@@ -124,7 +131,7 @@ a {
 ul {
   list-style: none;
   padding: 0px;
-  gap:10px;
+  gap: 10px;
 }
 
 Button {
@@ -132,7 +139,7 @@ Button {
   width: 90%;
   border: 1px solid var(--border);
   background-color: var(--darkestbackground);
-  border-radius: 15px;  
+  border-radius: 15px;
   color: var(--text);
   outline: none;
   margin: 20px 0px;
@@ -163,20 +170,13 @@ textarea:focus::placeholder {
   color: transparent;
 }
 
-
 input[type="date"]::-webkit-calendar-picker-indicator {
-  background: transparent;
-  bottom: 0;
-  color: transparent;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23bbbbbb" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
+  border-radius: 15px;
   cursor: pointer;
-  height: 40px;
-  left: 27%;
-  position: absolute;
-  right: 0;
-  top: 75.8%;
-  width: 250px;
+  height: 25px;
+  width: 150px;
 }
-
 
 .tasklist {
   margin-left: 28.5%;
@@ -216,7 +216,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   justify-content: space-between;
   margin-top: 0.8rem;
   padding: 1rem;
-  border-radius:15px;
+  border-radius: 15px;
   border: 1px solid var(--border);
 }
 .tasksview > li {
@@ -230,7 +230,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .delete-btn {
   border: 1px solid rgba(255, 0, 0, 0.247);
   color: var(--text);
-  margin-bottom:5rem;
+  margin-bottom: 5rem;
   width: 100%;
 }
 
@@ -245,33 +245,30 @@ textarea {
 }
 
 label {
-  display: inline-block;
+  display: none;
   width: 75px;
   font-size: 13px;
 }
 
 .add-new-task {
-  border-top:1px solid var(--border);
-  padding-top:2rem;
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
   margin-bottom: 2rem;
   width: 100%;
 }
 
-.add-teammembers{
-  
-  border-top:1px solid var(--border);
-  padding-top:2rem;
+.add-teammembers {
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
 }
 
 .add-new-task h2 {
   margin-bottom: 2rem;
 }
 
-.add-new-task input,
-.add-new-task .due-date,
-.add-new-task select,
-.add-new-task textarea {
-  width: 72% !important;
+.add-new-task select {
+  width: 90%;
+  height: 50px;
 }
 
 .type-text-label {
@@ -289,14 +286,12 @@ label {
   width: 80%;
 }
 
-.tasks-grid-layout>li > ul >li > span {
+.tasks-grid-layout > li > ul > li > span {
   color: var(--lighttext);
 }
-.tasks-grid-layout>li > ul >li {
+.tasks-grid-layout > li > ul > li {
   color: var(--lighttext);
 }
-
-
 
 .tasks-action-buttons {
   height: 100%;
@@ -315,11 +310,11 @@ label {
   display: flex;
   flex-flow: column;
   justify-content: space-around;
-  
+
   align-items: center;
 }
 
-.trash-button{
+.trash-button {
   border-bottom: 1px solid var(--border);
 }
 
@@ -337,41 +332,41 @@ label {
   justify-content: space-around;
 }
 
-
-.form-wrapper{
-  width:80%;
+.form-wrapper {
+  width: 80%;
   margin-top: 9rem;
   padding: 2rem;
   display: flex;
-  flex-flow:row;
-  justify-content:center;
+  flex-flow: row;
+  justify-content: center;
   align-items: center;
-  border:1px solid var(--border);
+  border: 1px solid var(--border);
   border-radius: 15px;
 }
 
-.signup-wrapper, .login-wrapper{
+.signup-wrapper,
+.login-wrapper {
   display: flex;
-  flex-flow:row;
+  flex-flow: row;
   justify-content: center;
   align-items: center;
-  width:80%;
+  width: 80%;
 }
 
-.login-container, .signup-container
-{
+.login-container,
+.signup-container {
   display: flex;
-  flex-flow:row;
+  flex-flow: row;
   justify-content: center;
   align-items: center;
-  width:50%;
+  width: 50%;
 }
 
 .signup-container {
-  border-left:1px solid var(--border);
+  border-left: 1px solid var(--border);
 }
 
-.card-container{
+.card-container {
   position: fixed;
   top: 0;
   left: 0px;
@@ -379,7 +374,7 @@ label {
   display: flex !important;
   flex-flow: column;
   align-items: center;
-  border-right:1px solid var(--border);
+  border-right: 1px solid var(--border);
   width: 22%;
   padding: 2rem;
 }
@@ -387,7 +382,7 @@ label {
 .card-wrapper {
   display: flex !important;
   flex-flow: column;
-  gap:5rem;
+  gap: 5rem;
   margin-top: 5rem;
 }
 
@@ -396,19 +391,35 @@ label {
   justify-content: center;
   align-items: center;
   font-size: 4rem;
-  height:150px;
+  height: 150px;
   width: 150px;
   border-radius: 100%;
-  border:1px solid var(--border);
+  border: 1px solid var(--border);
 }
 
-.Users-name{
-  padding-top:1rem;
+.Users-name {
+  padding-top: 1rem;
   text-transform: capitalize;
 }
 
 .card-description ul {
   display: flex;
   flex-flow: column;
-  gap:2rem;
+  gap: 2rem;
+}
+
+/* team member form */
+.add-teammember-form {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  align-content: center;
+  gap: 10px;
+}
+.add-teammember-form > input {
+  width: 75%;
+  margin-bottom: 0px;
+}
+.add-teammember-form > button {
+  width: 25%;
 }

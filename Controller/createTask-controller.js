@@ -37,6 +37,12 @@ exports.createNewTask = async (req, res) => {
   });
 };
 
+exports.showTask = async (req,res)=> {
+  const taskList = await TaskList.findById(req.TaskList._id);
+  const task = await Task.findById(req.Task.id);
+  res.render('./Components/Tasks/tasks',{taskList, task});
+}
+
 exports.updateTask = (req, res) => {
   const isActive = req.query.isactive;
   Task.updateOne(

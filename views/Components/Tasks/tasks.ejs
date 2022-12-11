@@ -1,0 +1,18 @@
+<%- include('../../Partials/header', {title: "Task Page - BeUpdated" }); -%> <%-
+include('../../Shared/navbar', {path:"Task Page"}); -%>
+<div class="container">
+  <div class="mobile-menu-container">
+    <div class="mobile-top-heading"><h1><%=taskList.taskListName%></h1></div>
+
+  </div>
+  <div
+    class="create-task-container tasklist-container create-task-container-mobile"
+    id="mobilemenuhandler"
+  >
+    <div class="close-button" onClick="`${mobileMenuHandler(false)}`">
+      <i class="fa-solid fa-xmark fa-2xl"></i>
+    </div>
+    
+</div>
+</div>
+<%- include('../../Partials/footer'); -%>

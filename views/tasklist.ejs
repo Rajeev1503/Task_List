@@ -9,7 +9,10 @@ include('./Shared/navbar', {path:"tasklist"}); -%>
   <div
     class="create-task-container tasklist-container create-task-container-mobile"
     id="mobilemenuhandler"
-  >
+  ><div class="close-button" onClick="`${mobileMenuHandler(false)}`">
+      <i class="fa-solid fa-xmark fa-2xl"></i
+        >
+    </div>
    <% if(isCreator) {%> 
     <%- include('./Components/Tasklist/edit', {taskList}); -%> <br> 
     <%}%>
@@ -20,9 +23,7 @@ include('./Shared/navbar', {path:"tasklist"}); -%>
     <% if(isCreator) {%> 
     <%- include('./Components/Tasklist/deletebutton', {taskList}); -%><br><br>
     <%}%>
-    <div class="close-button" onClick="`${mobileMenuHandler(false)}`">
-      <span>Close</span>
-    </div>
+    
   </div>
-  <%- include('./Components/Tasklist/tasks', {allTasks, taskList}) -%>
+  <%- include('./Components/Tasklist/alltasks', {allTasks, taskList}) -%>
 </div>
