@@ -1,4 +1,5 @@
 <div class="add-teammembers">
+  <% if(isCreator) {%> 
   <div>
     <h3>Add Team Members</h3>
     <form
@@ -15,7 +16,7 @@
       <br />
       <button class="submit">Add</button>
     </form>
-  </div>
+  </div><%}%>
 </div>
 <br>
 <div class="teammembers-list">
@@ -28,9 +29,9 @@
         <ul>
       <% for(let teamMember of teamMembers) { %>
     <li style="font-size: 12px; padding-left:2rem;">
-        <%=teamMember.fullname%>(<%=teamMember.username%>) &nbsp;<a href="/createtasklist/<%=taskList._id%>/deletemember/<%=teamMember.username%>"
+        <%=teamMember.fullname%>(<%=teamMember.username%>) &nbsp;<% if(isCreator) {%> <a href="/createtasklist/<%=taskList._id%>/deletemember/<%=teamMember.username%>"
         ><i class="fa-solid fa-xmark"></i
-      ></a>
+      ></a><%}%>
     </li>
     <%} }%>
   </ul>

@@ -15,7 +15,7 @@ exports.getTaskList = (req, res, next, id) => {
   });
 };
 exports.getTeamMember = (req, res, next, id) => {
-  User.findOne({username:id}).exec((err, teamMember) => {
+  User.findOne({ username: id }).exec((err, teamMember) => {
     if (err || !teamMember) {
       return res.status(404);
     }
@@ -25,7 +25,7 @@ exports.getTeamMember = (req, res, next, id) => {
 };
 
 exports.showAllTaskList = async (req, res) => {
-  if(!req.user){
+  if (!req.user) {
     return res.status(404).redirect("/auth");
   }
   const user = await User.findById(req.user._id);
@@ -36,7 +36,11 @@ exports.showAllTaskList = async (req, res) => {
   if (!allTaskList) {
     return res.status(404);
   }
-  res.status(200).render("createtasklist", { allTaskList });
+  const allTeamTaskList = await TaskList.find({ teammembers: user._id });
+  if (!allTeamTaskList) {
+    return res.status(404);
+  }
+  res.status(200).render("createtasklist", { allTaskList, allTeamTaskList });
 };
 
 exports.createTaskList = async (req, res) => {
@@ -70,6 +74,10 @@ exports.createTaskList = async (req, res) => {
 };
 
 exports.addTeamMember = async (req, res) => {
+  if (req.TaskList.creator.toString()!==req.user._id.toString()) {
+    return res.redirect('/');
+  }
+  else {
   const { teammemberusername } = req.body;
   const teamMember = await User.findOne({ username: teammemberusername });
   if (!teamMember) {
@@ -92,11 +100,15 @@ exports.addTeamMember = async (req, res) => {
     }
   });
 
-  res.status(200).redirect(`/createtasklist/${req.TaskList._id}`);
+  return res.status(200).redirect(`/createtasklist/${req.TaskList._id}`);
+}
 };
 
 exports.deleteTeamMember = async (req, res) => {
-
+  if (req.TaskList.creator.toString()!==req.user._id.toString()) {
+    return res.redirect('/');
+  }
+  else {
   const teamMember = await User.findById(req.teamMember._id);
   if (!teamMember) {
     return res.status(404).redirect("/");
@@ -118,10 +130,12 @@ exports.deleteTeamMember = async (req, res) => {
     }
   });
 
-  res.status(200).redirect(`/createtasklist/${req.TaskList._id}`);
+  return res.status(200).redirect(`/createtasklist/${req.TaskList._id}`);
+}
 };
 
 exports.taskListPage = async (req, res) => {
+  let isCreator = true;
   const taskList = await TaskList.findById(req.TaskList._id);
   if (!taskList) {
     return res.status(404);
@@ -136,24 +150,33 @@ exports.taskListPage = async (req, res) => {
   if (!teamMembers) {
     return res.status(404);
   }
-  res.status(200).render("tasklist", { taskList, allTasks, teamMembers });
+  if (req.TaskList.creator.toString()!==req.user._id.toString()) {
+    isCreator = false;
+  }
+  return res.status(200).render("tasklist", { taskList, allTasks, teamMembers, isCreator});
 };
 
 exports.saveEditedTask = async (req, res) => {
+  if (req.TaskList.creator.toString()!==req.user._id.toString()) {
+    return res.redirect('/');
+  }
+  else {
   const editedTask = await TaskList.findByIdAndUpdate(
     req.TaskList._id,
     req.body,
     { runValidators: true, new: true }
   );
-  res.redirect(`/createtasklist/${req.TaskList._id}`);
+  return res.redirect(`/createtasklist/${req.TaskList._id}`);
+}
 };
 
 exports.deleteTaskList = async (req, res) => {
-  try {
-    const deletetasks = await Task.deleteMany({ taskList: req.TaskList._id });
-    const deletedTaskList = await TaskList.findByIdAndDelete(req.TaskList._id);
-    res.status(200).redirect("/");
-  } catch (err) {
-    return res.status(400).redirect("/");
+  if (req.TaskList.creator.toString()!==req.user._id.toString()) {
+    return res.redirect('/');
+  }
+  else {
+      const deletetasks = await Task.deleteMany({ taskList: req.TaskList._id });
+      const deletedTaskList = await TaskList.findByIdAndDelete(req.TaskList._id);
+      res.status(200).redirect("/");
   }
 };

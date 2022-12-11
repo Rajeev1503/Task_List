@@ -34,6 +34,7 @@
   </div>
 
   <div class="tasklist">
+    <h3>Your Tasks</h3>
     <ul>
       <% for(let taskList of allTaskList) { %>
       <a href="/createtasklist/<%=taskList._id%>">
@@ -62,6 +63,50 @@
               <li>Total Tasks: <%=(taskList.tasks.length-1)%></li>
               <%} else {%>
               <li>Total Tasks: <%=(taskList.tasks.length)%></li>
+              <%}%>
+              <p style="color: #fa5">Completed</p>
+            </ul>
+          </li>
+        </div>
+        <% } %></a
+      >
+      <% }%>
+    </ul>
+  </div>
+  
+</div>
+
+<div class="container">
+  <div class="tasklist team-tasklist">
+    <h3>Team Tasks</h3>
+    <ul>
+      <% for(let teamTaskList of allTeamTaskList) { %>
+      <a href="/createtasklist/<%=teamTaskList._id%>">
+        <% if (teamTaskList.isActive) { %>
+        <div class="tasksview">
+          <li>
+            <ul>
+              <li>Name: <%= teamTaskList.taskListName %></li>
+              <li>Description: <%= teamTaskList.description %></li>
+              <% if(teamTaskList.tasks.length>1) {%>
+              <li>Total Tasks: <%=(teamTaskList.tasks.length-1)%></li>
+              <%} else {%>
+              <li>Total Tasks: <%=(teamTaskList.tasks.length)%></li>
+              <%}%>
+              <p style="color: green">Active</p>
+            </ul>
+          </li>
+        </div>
+        <%} else { %>
+        <div class="tasksview">
+          <li>
+            <ul>
+              <li>Name: <%= teamTaskList.taskListName %></li>
+              <li>Description: <%= teamTaskList.description %></li>
+              <% if(teamTaskList.tasks.length=1) {%>
+              <li>Total Tasks: <%=(teamTaskList.tasks.length-1)%></li>
+              <%} else {%>
+              <li>Total Tasks: <%=(teamTaskList.tasks.length)%></li>
               <%}%>
               <p style="color: #fa5">Completed</p>
             </ul>

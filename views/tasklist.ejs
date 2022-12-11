@@ -10,10 +10,16 @@ include('./Shared/navbar', {path:"tasklist"}); -%>
     class="create-task-container tasklist-container create-task-container-mobile"
     id="mobilemenuhandler"
   >
-    <%- include('./Components/Tasklist/edit', {taskList}); -%> <br>
-    <%- include('./Components/Tasklist/addteammember', {taskList, teamMembers}); -%> <br><br><br>
+   <% if(isCreator) {%> 
+    <%- include('./Components/Tasklist/edit', {taskList}); -%> <br> 
+    <%}%>
+    <%- include('./Components/Tasklist/addteammember', {taskList, teamMembers, isCreator}); -%> <br><br><br>
+    <% if(isCreator) {%> 
     <%- include('./Components/Tasklist/addtask', {taskList}); -%><br><br>
+    <%}%>
+    <% if(isCreator) {%> 
     <%- include('./Components/Tasklist/deletebutton', {taskList}); -%><br><br>
+    <%}%>
     <div class="close-button" onClick="`${mobileMenuHandler(false)}`">
       <span>Close</span>
     </div>
